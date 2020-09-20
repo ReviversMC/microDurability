@@ -1,5 +1,7 @@
 package dzwdz.microdurability;
 
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import me.sargunvohra.mcmods.autoconfig1u.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -7,13 +9,14 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 
 public class EntryPoint implements ModInitializer {
-    public static Config config;
+    public static ModConfig config;
 
     @Override
     public void onInitialize() {
         HudRenderCallback.EVENT.register(new Renderer());
 
-        config = new Config();
+        AutoConfig.register(ModConfig.class, JanksonConfigSerializer::new);
+        config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
     }
 
     public static boolean shouldWarn(ItemStack stack) {
@@ -21,6 +24,6 @@ public class EntryPoint implements ModInitializer {
         if (config.requireMending && EnchantmentHelper.getLevel(Enchantments.MENDING, stack) <= 0) return false;
         int durability = stack.getMaxDamage() - stack.getDamage();
         return durability < config.minDurability
-            && durability * 100 / config.minPercent < stack.getMaxDamage();
+            && durability * 100f / config.minPercent < stack.getMaxDamage();
     }
 }

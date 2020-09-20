@@ -14,6 +14,9 @@
   "entrypoints": {
     "main": [
       "dzwdz.microdurability.EntryPoint"
+    ],
+    "modmenu": [
+      "dzwdz.microdurability.ModMenuIntegration"
     ]
   },
   "mixins": [
