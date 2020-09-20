@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "microdurability",
+  "version": "${version}",
+  "name": "microDurability",
+  "description": "A minimal durability viewer.",
+  "authors": [
+    "dzwdz"
+  ],
+  "contact": {},
+  "license": "MPL-2.0",
+  "icon": "assets/microDurability/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "dzwdz.microdurability.EntryPoint"
+    ]
+  },
+  "mixins": [
+    "microDurability.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.9.3+build.207",
+    "fabric": "*",
+    "minecraft": "1.16.1"
+  }
+}
