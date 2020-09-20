@@ -3,15 +3,18 @@ package dzwdz.microdurability;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
-public class Renderer implements HudRenderCallback {
+public class Renderer extends DrawableHelper implements HudRenderCallback {
+    private static final Identifier TEX = new Identifier("microdurability", "textures/gui/icons.png");
     private final MinecraftClient mc;
 
     public Renderer() {
@@ -19,13 +22,25 @@ public class Renderer implements HudRenderCallback {
     }
 
     @Override
-    public void onHudRender(MatrixStack matrixStack, float v) {
+    public void onHudRender(MatrixStack matrixStack, float delta) {
         if (mc.player == null) return;
 
-        int x = mc.getWindow().getScaledWidth()/2 - 7;//+92;
-        int y = mc.getWindow().getScaledHeight() - 42;// - 18;
-        if (mc.player.experienceLevel > 0) y -= 6;
+        int scaledWidth = mc.getWindow().getScaledWidth();
+        int scaledHeight = mc.getWindow().getScaledHeight();
 
+        // render the held item warning
+        for (ItemStack s : mc.player.getItemsHand()) {
+            if (EntryPoint.shouldWarn(s)) {
+                mc.getTextureManager().bindTexture(TEX);
+                drawTexture(matrixStack, scaledWidth / 2 - 2, scaledHeight / 2 - 18, 0, 0, 3, 11); //todo: this doesn't align with the crosshair at some resolutions
+                break;
+            }
+        }
+
+        // render the armor durability
+        int x = scaledWidth/2 - 7;
+        int y = scaledHeight - 42;
+        if (mc.player.experienceLevel > 0) y -= 6;
         renderBar(mc.player.getEquippedStack(EquipmentSlot.HEAD), x, y);
         renderBar(mc.player.getEquippedStack(EquipmentSlot.CHEST), x, y + 3);
         renderBar(mc.player.getEquippedStack(EquipmentSlot.LEGS), x, y + 6);
