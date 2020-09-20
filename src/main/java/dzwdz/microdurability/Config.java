@@ -5,4 +5,6 @@ public class Config {
 
     int minDurability = 100;
     int minPercent = 10;
+
+    float blinkTime = 1f;
 }

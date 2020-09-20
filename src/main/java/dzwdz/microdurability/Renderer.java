@@ -17,6 +17,8 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
     private static final Identifier TEX = new Identifier("microdurability", "textures/gui/icons.png");
     private final MinecraftClient mc;
 
+    private float time = 0;
+
     public Renderer() {
         mc = MinecraftClient.getInstance();
     }
@@ -27,6 +29,7 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
 
         int scaledWidth = mc.getWindow().getScaledWidth();
         int scaledHeight = mc.getWindow().getScaledHeight();
+        time = (time + delta) % (EntryPoint.config.blinkTime * 40f);
 
         // render the held item warning
         for (ItemStack s : mc.player.getItemsHand()) {
@@ -39,12 +42,14 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
 
         // render the armor durability
         int x = scaledWidth/2 - 7;
-        int y = scaledHeight - 42;
+        int y = scaledHeight - 30;
         if (mc.player.experienceLevel > 0) y -= 6;
-        renderBar(mc.player.getEquippedStack(EquipmentSlot.HEAD), x, y);
-        renderBar(mc.player.getEquippedStack(EquipmentSlot.CHEST), x, y + 3);
-        renderBar(mc.player.getEquippedStack(EquipmentSlot.LEGS), x, y + 6);
-        renderBar(mc.player.getEquippedStack(EquipmentSlot.FEET), x, y + 9);
+        if (EntryPoint.config.blinkTime > 0)
+            for (ItemStack s : mc.player.getArmorItems())
+                if (time < EntryPoint.config.blinkTime * 20f && EntryPoint.shouldWarn(s)) return;
+
+        for (ItemStack s : mc.player.getArmorItems())
+            renderBar(s, x, y -= 3);
     }
 
     public void renderBar(ItemStack stack, int x, int y) {
