@@ -25,7 +25,9 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
 
     @Override
     public void onHudRender(MatrixStack matrixStack, float delta) {
-        if (mc.player == null) return;
+        if (mc.player == null
+         || !mc.interactionManager.hasStatusBars()
+         || mc.currentScreen != null) return;
 
         int scaledWidth = mc.getWindow().getScaledWidth();
         int scaledHeight = mc.getWindow().getScaledHeight();
