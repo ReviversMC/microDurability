@@ -3,11 +3,14 @@
   "id": "microdurability",
   "version": "${version}",
   "name": "microDurability",
-  "description": "A minimal durability viewer.",
+  "description": "A very minimal durability viewer.",
   "authors": [
     "dzwdz"
   ],
-  "contact": {},
+  "contact": {
+    "sources": "https://github.com/dzwdz/microDurability",
+    "issues": "https://github.com/dzwdz/microDurability/issues"
+  },
   "license": "MPL-2.0",
   "icon": "assets/microDurability/icon.png",
   "environment": "client",
@@ -26,5 +29,12 @@
     "fabricloader": ">=0.9.3+build.207",
     "fabric": "*",
     "minecraft": "1.16.3"
+  },
+  "custom": {
+    "modupdater": {
+      "strategy": "curseforge",
+      "projectID": 409222,
+      "strict": false
+    }
   }
 }
