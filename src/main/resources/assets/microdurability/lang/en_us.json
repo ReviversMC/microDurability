@@ -2,7 +2,8 @@
   "text.autoconfig.microdurability.title": "microDurability",
   "text.autoconfig.microdurability.option.requireMending.@PrefixText": "Low durability warning settings",
   "text.autoconfig.microdurability.option.requireMending": "Require mending",
-  "text.autoconfig.microdurability.option.minDurability": "Minimal durability",
-  "text.autoconfig.microdurability.option.minPercent": "Minimal percentage",
-  "text.autoconfig.microdurability.option.blinkTime": "Armor bar blink speed (0 to disable)"
+  "text.autoconfig.microdurability.option.minDurability": "Minimum durability",
+  "text.autoconfig.microdurability.option.minPercent": "Minimum percentage",
+  "text.autoconfig.microdurability.option.blinkTime": "Armor bar blink speed (0 to disable)",
+  "text.autoconfig.microdurability.option.toolWarning": "Display the tool break warning"
 }

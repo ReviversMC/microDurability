@@ -33,11 +33,13 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
         time = (time + delta) % (EntryPoint.config.blinkTime * 40f);
 
         // render the held item warning
-        for (ItemStack s : mc.player.getItemsHand()) {
-            if (EntryPoint.shouldWarn(s)) {
-                mc.getTextureManager().bindTexture(TEX);
-                drawTexture(matrixStack, scaledWidth / 2 - 2, scaledHeight / 2 - 18, 0, 0, 3, 11); //todo: this doesn't align with the crosshair at some resolutions
-                break;
+        if (EntryPoint.config.toolWarning) {
+            for (ItemStack s : mc.player.getItemsHand()) {
+                if (EntryPoint.shouldWarn(s)) {
+                    mc.getTextureManager().bindTexture(TEX);
+                    drawTexture(matrixStack, scaledWidth / 2 - 2, scaledHeight / 2 - 18, 0, 0, 3, 11); //todo: this doesn't align with the crosshair at some resolutions
+                    break;
+                }
             }
         }
 
