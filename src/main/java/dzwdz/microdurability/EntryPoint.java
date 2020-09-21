@@ -3,17 +3,17 @@ package dzwdz.microdurability;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 
 public class EntryPoint implements ModInitializer {
     public static ModConfig config;
+    public static Renderer renderer;
 
     @Override
     public void onInitialize() {
-        HudRenderCallback.EVENT.register(new Renderer());
+        renderer = new Renderer();
 
         AutoConfig.register(ModConfig.class, JanksonConfigSerializer::new);
         config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();

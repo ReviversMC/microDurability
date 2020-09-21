@@ -7,7 +7,7 @@ import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
 @Config(name = "microdurability")
 public class ModConfig implements ConfigData {
     @ConfigEntry.Gui.PrefixText
-    boolean requireMending = false;
+    boolean requireMending = true;
 
     int minDurability = 100;
     float minPercent = 10;
