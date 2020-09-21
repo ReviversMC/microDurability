@@ -12,7 +12,7 @@
     "issues": "https://github.com/dzwdz/microDurability/issues"
   },
   "license": "MPL-2.0",
-  "icon": "assets/microDurability/icon.png",
+  "icon": "assets/microdurability/icon.png",
   "environment": "client",
   "entrypoints": {
     "main": [
