@@ -34,6 +34,7 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
                 if (EntryPoint.shouldWarn(s)) {
                     mc.getTextureManager().bindTexture(TEX);
                     drawTexture(matrixStack, scaledWidth / 2 - 2, scaledHeight / 2 - 18, 0, 0, 3, 11); //todo: this doesn't align with the crosshair at some resolutions
+                    mc.getTextureManager().bindTexture(GUI_ICONS_TEXTURE);
                     break;
                 }
             }
@@ -49,6 +50,9 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
 
         for (ItemStack s : mc.player.getArmorItems())
             renderBar(s, x, y -= 3);
+
+        // this is probably unnecessary
+        RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
     }
 
     public void renderBar(ItemStack stack, int x, int y) {
