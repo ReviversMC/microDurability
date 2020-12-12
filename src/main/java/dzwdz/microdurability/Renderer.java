@@ -56,25 +56,25 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
     }
 
     public void renderBar(ItemStack stack, int x, int y) {
-        if (stack != null && stack.isDamaged()) {
-            RenderSystem.disableDepthTest();
-            RenderSystem.disableTexture();
-            RenderSystem.disableAlphaTest();
-            RenderSystem.disableBlend();
-            Tessellator tessellator = Tessellator.getInstance();
-            BufferBuilder bufferBuilder = tessellator.getBuffer();
-            float f = (float)stack.getDamage();
-            float g = (float)stack.getMaxDamage();
-            float h = Math.max(0.0F, (g - f) / g);
-            int i = Math.round(13.0F - f * 13.0F / g);
-            int j = MathHelper.hsvToRgb(h / 3.0F, 1.0F, 1.0F);
-            this.renderGuiQuad(bufferBuilder, x, y, 13, 2, 0, 0, 0, 255);
-            this.renderGuiQuad(bufferBuilder, x, y, i, 1, j >> 16 & 255, j >> 8 & 255, j & 255, 255);
-            RenderSystem.enableBlend();
-            RenderSystem.enableAlphaTest();
-            RenderSystem.enableTexture();
-            RenderSystem.enableDepthTest();
-        }
+        if (stack == null || stack.isEmpty()) return;
+        if (!EntryPoint.config.undamagedBars && !stack.isDamaged()) return;
+        RenderSystem.disableDepthTest();
+        RenderSystem.disableTexture();
+        RenderSystem.disableAlphaTest();
+        RenderSystem.disableBlend();
+        Tessellator tessellator = Tessellator.getInstance();
+        BufferBuilder bufferBuilder = tessellator.getBuffer();
+        float f = (float)stack.getDamage();
+        float g = (float)stack.getMaxDamage();
+        float h = Math.max(0.0F, (g - f) / g);
+        int i = Math.round(13.0F - f * 13.0F / g);
+        int j = MathHelper.hsvToRgb(h / 3.0F, 1.0F, 1.0F);
+        this.renderGuiQuad(bufferBuilder, x, y, 13, 2, 0, 0, 0, 255);
+        this.renderGuiQuad(bufferBuilder, x, y, i, 1, j >> 16 & 255, j >> 8 & 255, j & 255, 255);
+        RenderSystem.enableBlend();
+        RenderSystem.enableAlphaTest();
+        RenderSystem.enableTexture();
+        RenderSystem.enableDepthTest();
     }
 
     private void renderGuiQuad(BufferBuilder buffer, int x, int y, int width, int height, int red, int green, int blue, int alpha) {

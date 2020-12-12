@@ -14,4 +14,6 @@ public class ModConfig implements ConfigData {
 
     float blinkTime = 1f;
     boolean toolWarning = true;
+
+    boolean undamagedBars = true;
 }
