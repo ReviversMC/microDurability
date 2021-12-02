@@ -1,0 +1,10 @@
+{
+  "text.autoconfig.microdurability.title": "microDurability",
+  "text.autoconfig.microdurability.option.requireMending.@PrefixText": "Definições de aviso de baixa durabilidade",
+  "text.autoconfig.microdurability.option.requireMending": "Requer Remendo",
+  "text.autoconfig.microdurability.option.minDurability": "Durabilidade mínima",
+  "text.autoconfig.microdurability.option.minPercent": "Porcentagem mínima",
+  "text.autoconfig.microdurability.option.blinkTime": "Barra piscante",
+  "text.autoconfig.microdurability.option.toolWarning": "Mostrar o aviso de quebra da ferramenta",
+  "text.autoconfig.microdurability.option.undamagedBars": "Mostrar a armadura intacta"
+}
