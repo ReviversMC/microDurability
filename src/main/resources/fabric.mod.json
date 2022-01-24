@@ -1,41 +1,45 @@
 {
-  "schemaVersion": 1,
-  "id": "microdurability",
-  "version": "${version}",
-  "name": "microDurability",
-  "description": "A very minimal durability viewer.",
-  "authors": [
-    "dzwdz"
-  ],
-  "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/microdurability",
-    "sources": "https://github.com/dzwdz/microDurability",
-    "issues": "https://github.com/dzwdz/microDurability/issues"
-  },
-  "license": "MPL-2.0",
-  "icon": "assets/microdurability/icon.png",
-  "environment": "client",
-  "entrypoints": {
-    "main": [
-      "dzwdz.microdurability.EntryPoint"
+    "schemaVersion": 1,
+    "id": "microdurability",
+    "version": "${version}",
+    "name": "microDurability",
+    "description": "A very minimal durability viewer.",
+    "authors": [
+        "dzwdz",
+        "NebelNidas"
     ],
-    "modmenu": [
-      "dzwdz.microdurability.ModMenuIntegration"
-    ]
-  },
-  "mixins": [
-    "microDurability.mixins.json"
-  ],
-  "depends": {
-    "fabricloader": ">=0.12.7",
-    "fabric": "*",
-    "minecraft": "1.18.x"
-  },
-  "custom": {
-    "modupdater": {
-      "strategy": "curseforge",
-      "projectID": 409222,
-      "strict": false
+    "contributors": [
+        "BlockBuilder57"
+    ],
+    "contact": {
+        "homepage": "https://www.curseforge.com/minecraft/mc-mods/microdurability",
+        "sources": "https://github.com/dzwdz/microDurability",
+        "issues": "https://github.com/dzwdz/microDurability/issues"
+    },
+    "license": "MPL-2.0",
+    "icon": "assets/microdurability/icon.png",
+    "environment": "client",
+    "entrypoints": {
+        "main": [
+            "dzwdz.microdurability.EntryPoint"
+        ],
+        "modmenu": [
+            "dzwdz.microdurability.ModMenuIntegration"
+        ]
+    },
+    "mixins": [
+        "microDurability.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.12.7",
+        "fabric": "*",
+        "minecraft": "1.18.x"
+    },
+    "custom": {
+        "modupdater": {
+            "strategy": "curseforge",
+            "projectID": 409222,
+            "strict": false
+        }
     }
-  }
 }
