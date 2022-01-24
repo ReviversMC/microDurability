@@ -1,6 +1,5 @@
 package dzwdz.microdurability;
 
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
@@ -9,7 +8,6 @@ import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.MathHelper;
 
 public class Renderer extends DrawableHelper implements HudRenderCallback {
     private static final Identifier TEX = new Identifier("microdurability", "textures/gui/icons.png");
@@ -46,7 +44,7 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
         if (EntryPoint.config.blinkTime > 0)
             for (ItemStack s : mc.player.getArmorItems())
                 if (time < EntryPoint.config.blinkTime * 20f && EntryPoint.shouldWarn(s)) return;
-        
+
         for (ItemStack s : mc.player.getArmorItems())
             renderBar(s, x, y -= 3);
     }
@@ -55,7 +53,7 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
         if (stack == null || stack.isEmpty()) return;
         if (!EntryPoint.config.undamagedBars && !stack.isItemBarVisible()) return;
         if (!stack.isDamageable()) return;
-    
+
         RenderSystem.disableDepthTest();
         RenderSystem.disableTexture();
         RenderSystem.disableBlend();
