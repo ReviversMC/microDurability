@@ -29,10 +29,13 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
         if (EntryPoint.config.toolWarning) {
             for (ItemStack s : mc.player.getItemsHand()) {
                 if (EntryPoint.shouldWarn(s)) {
-                    RenderSystem.setShader(GameRenderer::getPositionTexShader);
-                    RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+                    if (EntryPoint.config.blinkTime > 0
+                            && time < EntryPoint.config.blinkTime * 10f) {
+                        break;
+                    }
                     RenderSystem.setShaderTexture(0, TEX);
                     drawTexture(matrixStack, scaledWidth / 2 - 2, scaledHeight / 2 - 18, 0, 0, 3, 11); //todo: this doesn't align with the crosshair at some resolutions
+                    RenderSystem.setShaderTexture(0, GUI_ICONS_TEXTURE);
                     break;
                 }
             }
