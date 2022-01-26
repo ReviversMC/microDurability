@@ -23,7 +23,10 @@ public class EntryPoint implements ModInitializer {
         if (stack == null || !stack.isDamageable()) return false;
         if (config.requireMending && EnchantmentHelper.getLevel(Enchantments.MENDING, stack) <= 0) return false;
         int durability = stack.getMaxDamage() - stack.getDamage();
-        return durability < config.minDurability
-            && durability * 100f / config.minPercent < stack.getMaxDamage();
+
+        boolean damageAbsoluteValueEnough = durability < config.minDurability;
+        boolean damagePercentageEnough = (durability * 100f / stack.getMaxDamage()) < config.minPercent;
+
+        return damageAbsoluteValueEnough && damagePercentageEnough;
     }
 }
