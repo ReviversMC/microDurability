@@ -1,8 +1,9 @@
-package dzwdz.microdurability;
+package com.github.reviversmc.microdurability;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+
+import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
@@ -11,6 +12,6 @@ public class ModMenuIntegration implements ModMenuApi {
 
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> AutoConfig.getConfigScreen(ModConfig.class, parent).get();
+        return screen -> AutoConfig.getConfigScreen(ModConfig.class, screen).get();
     }
 }

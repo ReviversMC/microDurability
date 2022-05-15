@@ -1,4 +1,4 @@
-package dzwdz.microdurability;
+package com.github.reviversmc.microdurability;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
@@ -9,13 +9,13 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-public class Renderer extends DrawableHelper implements HudRenderCallback {
+public abstract class RendererBase extends DrawableHelper implements HudRenderCallback {
     private static final Identifier TEX = new Identifier("microdurability", "textures/gui/icons.png");
     private final MinecraftClient mc;
 
     private float time = 0;
 
-    public Renderer() {
+    public RendererBase() {
         mc = MinecraftClient.getInstance();
     }
 
@@ -23,14 +23,14 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
     public void onHudRender(MatrixStack matrixStack, float delta) {
         int scaledWidth = mc.getWindow().getScaledWidth();
         int scaledHeight = mc.getWindow().getScaledHeight();
-        time = (time + delta) % (EntryPoint.config.blinkTime * 40f);
+        time = (time + delta) % (MicroDurability.config.blinkTime * 40f);
 
         // render the held item warning
-        if (EntryPoint.config.toolWarning) {
+        if (MicroDurability.config.toolWarning) {
             for (ItemStack s : mc.player.getItemsHand()) {
-                if (EntryPoint.shouldWarn(s)) {
-                    if (EntryPoint.config.blinkTime > 0
-                            && time < EntryPoint.config.blinkTime * 10f) {
+                if (MicroDurability.shouldWarn(s)) {
+                    if (MicroDurability.config.blinkTime > 0
+                            && time < MicroDurability.config.blinkTime * 10f) {
                         break;
                     }
                     RenderSystem.setShaderTexture(0, TEX);
@@ -45,9 +45,9 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
         int x = scaledWidth/2 - 7;
         int y = scaledHeight - 30;
         if (mc.player.experienceLevel > 0) y -= 6;
-        if (EntryPoint.config.blinkTime > 0)
+        if (MicroDurability.config.blinkTime > 0)
             for (ItemStack s : mc.player.getArmorItems())
-                if (time < EntryPoint.config.blinkTime * 20f && EntryPoint.shouldWarn(s)) return;
+                if (time < MicroDurability.config.blinkTime * 20f && MicroDurability.shouldWarn(s)) return;
 
         for (ItemStack s : mc.player.getArmorItems())
             renderBar(s, x, y -= 3);
@@ -55,7 +55,7 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
 
     public void renderBar(ItemStack stack, int x, int y) {
         if (stack == null || stack.isEmpty()) return;
-        if (!EntryPoint.config.undamagedBars && !stack.isItemBarVisible()) return;
+        if (!MicroDurability.config.undamagedBars && !stack.isItemBarVisible()) return;
         if (!stack.isDamageable()) return;
 
         RenderSystem.disableDepthTest();
@@ -72,14 +72,5 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
         RenderSystem.enableDepthTest();
     }
 
-    private void renderGuiQuad(BufferBuilder buffer, int x, int y, int width, int height, int red, int green, int blue, int alpha) {
-        RenderSystem.setShader(GameRenderer::getPositionColorShader);
-        buffer.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
-        buffer.vertex(x,         y,          0.0D).color(red, green, blue, alpha).next();
-        buffer.vertex(x,         y + height, 0.0D).color(red, green, blue, alpha).next();
-        buffer.vertex(x + width, y + height, 0.0D).color(red, green, blue, alpha).next();
-        buffer.vertex(x + width, y,          0.0D).color(red, green, blue, alpha).next();
-        buffer.end();
-        BufferRenderer.draw(buffer);
-    }
+    protected abstract void renderGuiQuad(BufferBuilder buffer, int x, int y, int width, int height, int red, int green, int blue, int alpha);
 }

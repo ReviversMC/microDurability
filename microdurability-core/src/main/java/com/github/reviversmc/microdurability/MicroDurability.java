@@ -1,20 +1,17 @@
-package dzwdz.microdurability;
+package com.github.reviversmc.microdurability;
 
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
-import me.sargunvohra.mcmods.autoconfig1u.serializer.JanksonConfigSerializer;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 
-public class EntryPoint implements ModInitializer {
+public class MicroDurability implements ModInitializer {
     public static ModConfig config;
-    public static Renderer renderer;
 
     @Override
     public void onInitialize() {
-        renderer = new Renderer();
-
         AutoConfig.register(ModConfig.class, JanksonConfigSerializer::new);
         config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
     }

@@ -1,0 +1,44 @@
+{
+    "schemaVersion": 1,
+    "id": "microdurability-core",
+    "version": "${version}",
+    "name": "microDurability Core",
+    "description": "Cross Minecraft version compatible components of microDurability",
+    "authors": [
+        "NebelNidas",
+        "dzwdz"
+    ],
+    "contributors": [
+        "BlockBuilder57"
+    ],
+    "contact": {
+        "homepage": "https://www.curseforge.com/minecraft/mc-mods/microdurability",
+        "sources": "https://github.com/ReviversMC/microDurability",
+        "issues": "https://github.com/ReviversMC/microDurability/issues"
+    },
+    "license": "CC-BY-NC-SA-4.0",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "com.github.reviversmc.microdurability.MicroDurability"
+        ]
+    },
+    "depends": {
+        "fabricloader": ">=0.12.9",
+        "fabric-api-base": "*",
+        "fabric-rendering-v1": "*",
+        "cloth-config2": ">=5.3.63",
+        "minecraft": ">=1.18"
+    },
+    "recommends": {
+        "modmenu": "*"
+    },
+    "custom": {
+        "modmenu": {
+            "badges": ["library"],
+            "parent": {
+                "id": "microdurability"
+            }
+        }
+    }
+}
