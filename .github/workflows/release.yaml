@@ -40,8 +40,8 @@ jobs:
       - name: Publish 1.18 version
         uses: Kir-Antipov/mc-publish@v2.1
         with:
-          # modrinth-id: /
-          # modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-id: JW3bGnLO
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
           curseforge-id: 409222
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
@@ -65,8 +65,8 @@ jobs:
       - name: Publish 1.19 version
         uses: Kir-Antipov/mc-publish@v2.1
         with:
-          # modrinth-id: /
-          # modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-id: JW3bGnLO
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
           curseforge-id: 409222
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
