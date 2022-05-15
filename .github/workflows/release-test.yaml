@@ -55,6 +55,11 @@ jobs:
             1.18.1
             1.18.2
 
+          dependencies: |
+            fabric-api    | depends
+            cloth-config  | depends
+            modmenu       | recommends
+
       - name: Publish 1.19 version
         uses: Kir-Antipov/mc-publish@v2.1
         with:
@@ -72,3 +77,8 @@ jobs:
 
           game-versions: |
             22w19a
+
+          dependencies: |
+            fabric-api    | depends
+            cloth-config  | depends
+            modmenu       | recommends
