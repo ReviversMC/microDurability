@@ -6,9 +6,18 @@
 version: 2
 updates:
   - package-ecosystem: "gradle"
-    directory: "/" # Location of package manifests
+    directory: "/microdurability-core" # Location of package manifests
     schedule:
       interval: "daily"
+  - package-ecosystem: "gradle"
+    directory: "/microdurability-1.18" # Location of package manifests
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "gradle"
+    directory: "/microdurability-1.19" # Location of package manifests
+    schedule:
+      interval: "daily"
+
   - package-ecosystem: "github-actions"
     directory: "/" # Location of package manifests
     schedule:
