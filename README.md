@@ -1,3 +1,5 @@
+<img height="70" align="right" src="./microdurability-1.18/src/main/resources/assets/microdurability/icon.png">
+
 # microDurability
 [![CurseForge downloads](https://cf.way2muchnoise.eu/microdurability.svg)](https://www.curseforge.com/minecraft/mc-mods/microdurability)
 [![CurseForge versions](https://cf.way2muchnoise.eu/versions/microdurability.svg)](https://www.curseforge.com/minecraft/mc-mods/microdurability)
