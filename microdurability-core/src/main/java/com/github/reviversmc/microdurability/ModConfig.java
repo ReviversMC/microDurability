@@ -16,4 +16,7 @@ public class ModConfig implements ConfigData {
     boolean toolWarning = true;
 
     boolean undamagedBars = true;
+
+    boolean armorWarning = true;
+
 }

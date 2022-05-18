@@ -42,15 +42,18 @@ public abstract class RendererBase extends DrawableHelper implements HudRenderCa
         }
 
         // render the armor durability
-        int x = scaledWidth/2 - 7;
-        int y = scaledHeight - 30;
-        if (mc.player.experienceLevel > 0) y -= 6;
-        if (MicroDurability.config.blinkTime > 0)
-            for (ItemStack s : mc.player.getArmorItems())
-                if (time < MicroDurability.config.blinkTime * 20f && MicroDurability.shouldWarn(s)) return;
+        if (MicroDurability.config.armorWarning) {
+            int x = scaledWidth/2 - 7;
+            int y = scaledHeight - 30;
+            if (mc.player.experienceLevel > 0) y -= 6;
+            if (MicroDurability.config.blinkTime > 0)
+                for (ItemStack s : mc.player.getArmorItems())
+                    if (time < MicroDurability.config.blinkTime * 20f && MicroDurability.shouldWarn(s)) return;
 
-        for (ItemStack s : mc.player.getArmorItems())
-            renderBar(s, x, y -= 3);
+            for (ItemStack s : mc.player.getArmorItems())
+                renderBar(s, x, y -= 3);
+        }
+
     }
 
     public void renderBar(ItemStack stack, int x, int y) {
