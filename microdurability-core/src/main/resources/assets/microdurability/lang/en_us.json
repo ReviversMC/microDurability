@@ -11,5 +11,5 @@
   "text.autoconfig.microdurability.option.lowDurabilityWarning.onlyOnMendingItems": "Display only on mending items",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPointsBeforeWarning": "Minimum durability points before showing the warning",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPercentageBeforeWarning": "Minimum durability percentage before showing the warning",
-  "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime": "Blink speed"
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime": "Blink speed (in seconds)"
 }
