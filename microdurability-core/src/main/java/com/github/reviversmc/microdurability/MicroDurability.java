@@ -17,12 +17,18 @@ public class MicroDurability implements ModInitializer {
     }
 
     public static boolean shouldWarn(ItemStack stack) {
-        if (stack == null || !stack.isDamageable()) return false;
-        if (config.requireMending && EnchantmentHelper.getLevel(Enchantments.MENDING, stack) <= 0) return false;
+        if (stack == null || !stack.isDamageable()) {
+            return false;
+        }
+        if (config.lowDurabilityWarning.onlyOnMendingItems
+                && EnchantmentHelper.getLevel(Enchantments.MENDING, stack) <= 0) {
+            return false;
+        }
         int durability = stack.getMaxDamage() - stack.getDamage();
 
-        boolean damageAbsoluteValueEnough = durability < config.minDurability;
-        boolean damagePercentageEnough = (durability * 100f / stack.getMaxDamage()) < config.minPercent;
+        boolean damageAbsoluteValueEnough = durability < config.lowDurabilityWarning.minDurabilityPointsBeforeWarning;
+        boolean damagePercentageEnough =
+                (durability * 100f / stack.getMaxDamage()) < config.lowDurabilityWarning.minDurabilityPercentageBeforeWarning;
 
         return damageAbsoluteValueEnough && damagePercentageEnough;
     }

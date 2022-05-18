@@ -23,42 +23,61 @@ public abstract class RendererBase extends DrawableHelper implements HudRenderCa
     public void onHudRender(MatrixStack matrixStack, float delta) {
         int scaledWidth = mc.getWindow().getScaledWidth();
         int scaledHeight = mc.getWindow().getScaledHeight();
-        time = (time + delta) % (MicroDurability.config.blinkTime * 40f);
+        time = (time + delta) % (MicroDurability.config.lowDurabilityWarning.blinkTime * 40f);
 
-        // render the held item warning
-        if (MicroDurability.config.toolWarning) {
-            for (ItemStack s : mc.player.getItemsHand()) {
-                if (MicroDurability.shouldWarn(s)) {
-                    if (MicroDurability.config.blinkTime > 0
-                            && time < MicroDurability.config.blinkTime * 10f) {
+        // Render held item low durability warning
+        if (MicroDurability.config.lowDurabilityWarning.displayWarningForTools) {
+            for (ItemStack item : mc.player.getItemsHand()) {
+                if (MicroDurability.shouldWarn(item)) {
+                    if (MicroDurability.config.lowDurabilityWarning.blinkTime > 0
+                            && time < MicroDurability.config.lowDurabilityWarning.blinkTime * 20f) {
                         break;
                     }
-                    RenderSystem.setShaderTexture(0, TEX);
-                    drawTexture(matrixStack, scaledWidth / 2 - 2, scaledHeight / 2 - 18, 0, 0, 3, 11); //todo: this doesn't align with the crosshair at some resolutions
-                    RenderSystem.setShaderTexture(0, GUI_ICONS_TEXTURE);
+                    renderWarning(matrixStack, scaledWidth/2 - 2, scaledHeight/2 - 18); // TODO: This doesn't align with the crosshair at some resolutions
                     break;
                 }
             }
         }
 
-        // render the armor durability
-        if (MicroDurability.config.armorWarning) {
-            int x = scaledWidth/2 - 7;
-            int y = scaledHeight - 30;
-            if (mc.player.experienceLevel > 0) y -= 6;
-            if (MicroDurability.config.blinkTime > 0)
-                for (ItemStack s : mc.player.getArmorItems())
-                    if (time < MicroDurability.config.blinkTime * 20f && MicroDurability.shouldWarn(s)) return;
+        int x = scaledWidth/2 - 7;
+        int y = scaledHeight - 30;
+        if (mc.player.experienceLevel > 0) y -= 6;
+        boolean canRenderArmorBar = true;
 
-            for (ItemStack s : mc.player.getArmorItems())
-                renderBar(s, x, y -= 3);
+        // Render armor low durability warning
+        if (MicroDurability.config.lowDurabilityWarning.displayWarningForArmor) {
+            for (ItemStack armorPiece : mc.player.getArmorItems()) {
+                if (MicroDurability.shouldWarn(armorPiece)) {
+                    if (MicroDurability.config.lowDurabilityWarning.blinkTime > 0
+                            && time < MicroDurability.config.lowDurabilityWarning.blinkTime * 20f) {
+                        break;
+                    }
+                    renderWarning(matrixStack, x+5, y-12);
+                    canRenderArmorBar = false;
+                    break;
+                }
+            }
+        }
+
+        // Render the armor durability
+        if (!canRenderArmorBar) return;
+        if (MicroDurability.config.armorBars.displayArmorBars) {
+            for (ItemStack armorPiece : mc.player.getArmorItems()) {
+                renderBar(armorPiece, x, y -= 3);
+            }
         }
 
     }
 
+    public void renderWarning(MatrixStack matrixStack, int x, int y) {
+        RenderSystem.setShaderTexture(0, TEX);
+        drawTexture(matrixStack, x, y, 0, 0, 3, 11);
+        RenderSystem.setShaderTexture(0, GUI_ICONS_TEXTURE);
+    }
+
     public void renderBar(ItemStack stack, int x, int y) {
         if (stack == null || stack.isEmpty()) return;
-        if (!MicroDurability.config.undamagedBars && !stack.isItemBarVisible()) return;
+        if (!MicroDurability.config.armorBars.displayBarsForUndamagedArmor && !stack.isItemBarVisible()) return;
         if (!stack.isDamageable()) return;
 
         RenderSystem.disableDepthTest();
