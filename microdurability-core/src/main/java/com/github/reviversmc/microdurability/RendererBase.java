@@ -2,6 +2,7 @@ package com.github.reviversmc.microdurability;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.render.*;
@@ -42,6 +43,9 @@ public abstract class RendererBase extends DrawableHelper implements HudRenderCa
         int x = scaledWidth/2 - 7;
         int y = scaledHeight - 30;
         if (mc.player.experienceLevel > 0) y -= 6;
+        if (FabricLoader.getInstance().getObjectShare().get("raised:distance") instanceof Integer distance) {
+            y -= distance;
+        }
         boolean canRenderArmorBar = true;
 
         // Render armor low durability warning
