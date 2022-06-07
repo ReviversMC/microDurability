@@ -52,6 +52,7 @@ dependencies {
         modRuntimeOnly "maven.modrinth:starlight:${project.starlight_version_1_18}"
         modRuntimeOnly "curse.maven:smooth-boot-415758:${project.smoothboot_version_1_18}"
         modRuntimeOnly "curse.maven:no-fade-452768:${project.no_fade_version_1_18}"
+        modRuntimeOnly "maven.modrinth:raised:${project.raised_version_1_18}"
 
         // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
         // You may need to force-disable transitiveness on them.
