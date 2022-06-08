@@ -50,8 +50,8 @@ jobs:
 
           files-primary: microdurability-1.18/build/libs/!(*-@(dev|sources)).jar
 
-          name: microDurability 0.3.3 for 1.18
-          version: 0.3.3+1.18
+          name: microDurability 0.3.4 for 1.18
+          version: 0.3.4+1.18
           version-type: release
 
           loaders: |
@@ -80,15 +80,15 @@ jobs:
 
           files-primary: microdurability-1.19/build/libs/!(*-@(dev|sources)).jar
 
-          name: microDurability 0.3.3 for 1.19
-          version: 0.3.3+1.19
+          name: microDurability 0.3.4 for 1.19
+          version: 0.3.4+1.19
           version-type: beta
 
           loaders: |
             fabric
 
           game-versions: |
-            22w19a
+            1.19
 
           dependencies: |
             fabric-api    | depends
