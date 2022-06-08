@@ -82,7 +82,7 @@ jobs:
 
           name: microDurability 0.3.4 for 1.19
           version: 0.3.4+1.19
-          version-type: beta
+          version-type: release
 
           loaders: |
             fabric
