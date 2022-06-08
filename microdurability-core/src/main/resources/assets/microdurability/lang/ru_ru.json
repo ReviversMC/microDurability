@@ -1,0 +1,15 @@
+{
+  "text.autoconfig.microdurability.title": "Конфигурация microDurability",
+
+  "text.autoconfig.microdurability.category.armorBars": "Панели брони",
+  "text.autoconfig.microdurability.option.armorBars.displayArmorBars": "Отобразить панель брони",
+  "text.autoconfig.microdurability.option.armorBars.displayBarsForUndamagedArmor": "Отобразить панели для неповреждённой брони",
+
+  "text.autoconfig.microdurability.category.lowDurabilityWarning": "Предупреждение о низкой прочности",
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.displayWarningForTools": "Отобразить предупреждение для инструментов",
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.displayWarningForArmor": "Отобразить предупреждение для брони",
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.onlyOnMendingItems": "Отобразить только на починочных предметах",
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPointsBeforeWarning": "Минимум очков прочности до показа предупреждения",
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPercentageBeforeWarning": "Минимум % прочности до показа предупреждения",
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime": "Скорость мигания (в секундах)"
+}
