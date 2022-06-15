@@ -27,15 +27,15 @@ public class ModConfig implements ConfigData {
         public boolean displayWarningForArmor = true;
         public boolean onlyOnMendingItems = true;
 
-        @Comment("An item's durability has to be below both the minimum point value and the minimum percentage for the warning to show!")
+        @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 1, max = 250)
         public int minDurabilityPointsBeforeWarning = 100;
 
-        @Comment("An item's durability has to be below both the minimum point value and the minimum percentage for the warning to show!")
+        @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 1, max = 99)
         public int minDurabilityPercentageBeforeWarning = 10;
 
-        @Comment("Set to 0 to disable blinking")
+        @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 0, max = 5)
         public float blinkTime = 1f;
     }
