@@ -10,6 +10,12 @@
   "text.autoconfig.microdurability.option.lowDurabilityWarning.displayWarningForArmor": "Отображать предупреждение для брони",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.onlyOnMendingItems": "Отображать только на предметах с зачарованием \"Починка\"",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPointsBeforeWarning": "Минимальный уровень прочности до показа предупреждения",
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPointsBeforeWarning.@Tooltip": "Прочность предмета должна быть ниже минимального уровня и процента прочности для показа предупреждения.",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPercentageBeforeWarning": "Минимальный % прочности до показа предупреждения",
-  "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime": "Задержка между миганиями (в секундах)"
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPercentageBeforeWarning.@Tooltip": "Прочность предмета должна быть ниже минимального уровня и процента прочности для показа предупреждения.",
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime": "Задержка между миганиями (в секундах)",
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime.@Tooltip": "Поставьте значение 0, чтобы отключить мигание.",
+
+  "modmenu.summaryTranslation.microdurability": "Очень минималистичный показатель прочности",
+  "modmenu.descriptionTranslation.microdurability": "Очень минималистичный показатель прочности"
 }
