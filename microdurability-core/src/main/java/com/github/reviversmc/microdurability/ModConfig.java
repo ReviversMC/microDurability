@@ -15,6 +15,12 @@ public class ModConfig implements ConfigData {
     public static class ArmorBars {
         public boolean displayArmorBars = true;
         public boolean displayBarsForUndamagedArmor = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean useCustomColorInBarsForUndamagedArmor = true;
+
+        @ConfigEntry.ColorPicker(allowAlpha = true)
+        public int customColorInBarsForUndamagedArmor = 0xFFFFFFFF;
     }
 
 
