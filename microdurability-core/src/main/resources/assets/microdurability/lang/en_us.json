@@ -4,12 +4,21 @@
   "text.autoconfig.microdurability.category.armorBars": "Armor Bars",
   "text.autoconfig.microdurability.option.armorBars.displayArmorBars": "Display armor bars",
   "text.autoconfig.microdurability.option.armorBars.displayBarsForUndamagedArmor": "Display bars for undamaged armor",
+  "text.autoconfig.microdurability.option.armorBars.useCustomColorInBarsForUndamagedArmor": "Use custom color in bars for undamaged armor",
+  "text.autoconfig.microdurability.option.armorBars.useCustomColorInBarsForUndamagedArmor.@Tooltip": "If armor is undamaged, its bar will have custom color.",
+  "text.autoconfig.microdurability.option.armorBars.customColorInBarsForUndamagedArmor": "Custom color in bars for undamaged armor (#ARGB format)",
 
   "text.autoconfig.microdurability.category.lowDurabilityWarning": "Low Durability Warning",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.displayWarningForTools": "Display warning for tools",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.displayWarningForArmor": "Display warning for armor",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.onlyOnMendingItems": "Display only on mending items",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPointsBeforeWarning": "Minimum durability points before showing the warning",
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPointsBeforeWarning.@Tooltip": "An item's durability has to be below both the minimum point value and the minimum percentage for the warning to show!",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPercentageBeforeWarning": "Minimum durability percentage before showing the warning",
-  "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime": "Blink speed (in seconds)"
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPercentageBeforeWarning.@Tooltip": "An item's durability has to be below both the minimum point value and the minimum percentage for the warning to show!",
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime": "Blink speed (in seconds)",
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime.@Tooltip": "Set to 0 to disable blinking.",
+
+  "modmenu.summaryTranslation.microdurability": "A very minimal durability viewer",
+  "modmenu.descriptionTranslation.microdurability": "A very minimal durability viewer"
 }

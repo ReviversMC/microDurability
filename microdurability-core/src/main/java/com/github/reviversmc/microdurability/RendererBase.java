@@ -92,7 +92,12 @@ public abstract class RendererBase extends DrawableHelper implements HudRenderCa
         int width = stack.getItemBarStep();
         int color = stack.getItemBarColor();
         this.renderGuiQuad(bufferBuilder, x, y, 13, 2, 0, 0, 0, 255);
-        this.renderGuiQuad(bufferBuilder, x, y, width, 1, color >> 16 & 255, color >> 8 & 255, color & 255, 255);
+        if (!stack.isDamaged() && MicroDurability.config.armorBars.useCustomColorInBarsForUndamagedArmor) {
+            int argb = MicroDurability.config.armorBars.customColorInBarsForUndamagedArmor;
+            this.renderGuiQuad(bufferBuilder, x, y, 13, 1, ((argb >> 16) & 0xFF) & 255, ((argb >> 8) & 0xFF) & 255, (argb & 0xFF) & 255, ((argb >> 24) & 0xFF) & 255);
+        } else {
+            this.renderGuiQuad(bufferBuilder, x, y, width, 1, color >> 16 & 255, color >> 8 & 255, color & 255, 255);
+        }
         RenderSystem.enableBlend();
         RenderSystem.enableTexture();
         RenderSystem.enableDepthTest();
