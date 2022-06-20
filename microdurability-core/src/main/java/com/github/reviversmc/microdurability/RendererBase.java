@@ -90,14 +90,25 @@ public abstract class RendererBase extends DrawableHelper implements HudRenderCa
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferBuilder = tessellator.getBuffer();
         int width = stack.getItemBarStep();
-        int color = stack.getItemBarColor();
         this.renderGuiQuad(bufferBuilder, x, y, 13, 2, 0, 0, 0, 255);
-        if (!stack.isDamaged() && MicroDurability.config.armorBars.useCustomColorInBarsForUndamagedArmor) {
-            int argb = MicroDurability.config.armorBars.customColorInBarsForUndamagedArmor;
-            this.renderGuiQuad(bufferBuilder, x, y, 13, 1, ((argb >> 16) & 0xFF) & 255, ((argb >> 8) & 0xFF) & 255, (argb & 0xFF) & 255, ((argb >> 24) & 0xFF) & 255);
+        int red;
+        int green;
+        int blue;
+        int alpha;
+        if (!stack.isDamaged() && MicroDurability.config.armorBars.useCustomBarColorForUndamagedArmor) {
+            int argb = MicroDurability.config.armorBars.customBarColorForUndamagedArmor;
+            red = ((argb >> 16) & 0xFF) & 255;
+            green = ((argb >> 8) & 0xFF) & 255;
+            blue = (argb & 0xFF) & 255;
+            alpha = ((argb >> 24) & 0xFF) & 255;
         } else {
-            this.renderGuiQuad(bufferBuilder, x, y, width, 1, color >> 16 & 255, color >> 8 & 255, color & 255, 255);
+            int color = stack.getItemBarColor();
+            red = color >> 16 & 255;
+            green = color >> 8 & 255;
+            blue = color & 255;
+            alpha = 255;
         }
+        this.renderGuiQuad(bufferBuilder, x, y, width, 1, red, green, blue, alpha);
         RenderSystem.enableBlend();
         RenderSystem.enableTexture();
         RenderSystem.enableDepthTest();

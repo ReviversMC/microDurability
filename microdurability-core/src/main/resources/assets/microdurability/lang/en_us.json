@@ -4,9 +4,9 @@
   "text.autoconfig.microdurability.category.armorBars": "Armor Bars",
   "text.autoconfig.microdurability.option.armorBars.displayArmorBars": "Display armor bars",
   "text.autoconfig.microdurability.option.armorBars.displayBarsForUndamagedArmor": "Display bars for undamaged armor",
-  "text.autoconfig.microdurability.option.armorBars.useCustomColorInBarsForUndamagedArmor": "Use custom color in bars for undamaged armor",
-  "text.autoconfig.microdurability.option.armorBars.useCustomColorInBarsForUndamagedArmor.@Tooltip": "If armor is undamaged, its bar will have custom color.",
-  "text.autoconfig.microdurability.option.armorBars.customColorInBarsForUndamagedArmor": "Custom color in bars for undamaged armor (#ARGB format)",
+  "text.autoconfig.microdurability.option.armorBars.useCustomBarColorForUndamagedArmor": "Use custom bar color for undamaged armor",
+  "text.autoconfig.microdurability.option.armorBars.useCustomBarColorForUndamagedArmor.@Tooltip": "If an armor piece is undamaged, its bar will have the defined custom color.",
+  "text.autoconfig.microdurability.option.armorBars.customBarColorForUndamagedArmor": "Custom bar color for undamaged armor (#ARGB format)",
 
   "text.autoconfig.microdurability.category.lowDurabilityWarning": "Low Durability Warning",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.displayWarningForTools": "Display warning for tools",

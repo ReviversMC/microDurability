@@ -4,9 +4,9 @@
   "text.autoconfig.microdurability.category.armorBars": "Индикаторы брони",
   "text.autoconfig.microdurability.option.armorBars.displayArmorBars": "Отображать индикаторы брони",
   "text.autoconfig.microdurability.option.armorBars.displayBarsForUndamagedArmor": "Отображать индикаторы для неповреждённой брони",
-  "text.autoconfig.microdurability.option.armorBars.useCustomColorInBarsForUndamagedArmor": "Использовать свой цвет на индикаторах для неповреждённой брони",
-  "text.autoconfig.microdurability.option.armorBars.useCustomColorInBarsForUndamagedArmor.@Tooltip": "Если броня не имеет повреждений, её индикатор будет иметь указанный ниже цвет.",
-  "text.autoconfig.microdurability.option.armorBars.customColorInBarsForUndamagedArmor": "Свой цвет для индикаторов для неповреждённой брони (формат #ARGB)",
+  "text.autoconfig.microdurability.option.armorBars.useCustomBarColorForUndamagedArmor": "Использовать свой цвет на индикаторах для неповреждённой брони",
+  "text.autoconfig.microdurability.option.armorBars.useCustomBarColorForUndamagedArmor.@Tooltip": "Если броня не имеет повреждений, её индикатор будет иметь указанный ниже цвет.",
+  "text.autoconfig.microdurability.option.armorBars.customBarColorForUndamagedArmor": "Свой цвет для индикаторов для неповреждённой брони (формат #ARGB)",
 
   "text.autoconfig.microdurability.category.lowDurabilityWarning": "Предупреждение о низкой прочности",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.displayWarningForTools": "Отображать предупреждение для инструментов",

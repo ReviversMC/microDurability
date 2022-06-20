@@ -16,12 +16,12 @@ public class ModConfig implements ConfigData {
         public boolean displayArmorBars = true;
         public boolean displayBarsForUndamagedArmor = true;
 
-        @Comment("If armor is undamaged, its bar will have custom color.")
+        @Comment("If an armor piece is undamaged, its bar will have the defined custom color.")
         @ConfigEntry.Gui.Tooltip
-        public boolean useCustomColorInBarsForUndamagedArmor = true;
+        public boolean useCustomBarColorForUndamagedArmor = false;
 
         @ConfigEntry.ColorPicker(allowAlpha = true)
-        public int customColorInBarsForUndamagedArmor = 0xFFFFFFFF;
+        public int customBarColorForUndamagedArmor = 0xFFFFFFFF;
     }
 
 
