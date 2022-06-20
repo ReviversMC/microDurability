@@ -50,8 +50,8 @@ jobs:
 
           files-primary: microdurability-1.17/build/libs/!(*-@(dev|sources)).jar
 
-          name: microDurability 0.3.5 for 1.17 and 1.18
-          version: 0.3.5+1.17
+          name: microDurability 0.3.6 for 1.17 and 1.18
+          version: 0.3.6+1.17
           version-type: release
 
           loaders: |
@@ -82,8 +82,8 @@ jobs:
 
           files-primary: microdurability-1.19/build/libs/!(*-@(dev|sources)).jar
 
-          name: microDurability 0.3.5 for 1.19
-          version: 0.3.5+1.19
+          name: microDurability 0.3.6 for 1.19
+          version: 0.3.6+1.19
           version-type: release
 
           loaders: |
