@@ -10,7 +10,7 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"
-    directory: "/microdurability-1.18" # Location of package manifests
+    directory: "/microdurability-1.17" # Location of package manifests
     schedule:
       interval: "daily"
   - package-ecosystem: "gradle"

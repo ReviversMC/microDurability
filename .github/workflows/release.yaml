@@ -25,8 +25,8 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
 
-      - name: Build 1.18 project
-        run: ./gradlew :microdurability-1.18:build --no-daemon --stacktrace
+      - name: Build 1.17 project
+        run: ./gradlew :microdurability-1.17:build --no-daemon --stacktrace
 
       - name: Build 1.19 project
         run: ./gradlew :microdurability-1.19:build --no-daemon --stacktrace
@@ -37,7 +37,7 @@ jobs:
       #     files: "**/build/libs/*.jar;!**/build/libs/*-sources.jar;!**/build/libs/*-dev.jar;!microdurability-core/"
       #     repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish 1.18 version
+      - name: Publish 1.17 version
         uses: Kir-Antipov/mc-publish@v3.0
         with:
           modrinth-id: JW3bGnLO
@@ -48,16 +48,18 @@ jobs:
 
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-          files-primary: microdurability-1.18/build/libs/!(*-@(dev|sources)).jar
+          files-primary: microdurability-1.17/build/libs/!(*-@(dev|sources)).jar
 
-          name: microDurability 0.3.5 for 1.18
-          version: 0.3.5+1.18
+          name: microDurability 0.3.5 for 1.17 and 1.18
+          version: 0.3.5+1.17
           version-type: release
 
           loaders: |
             fabric
 
           game-versions: |
+            1.17
+            1.17.1
             1.18
             1.18.1
             1.18.2

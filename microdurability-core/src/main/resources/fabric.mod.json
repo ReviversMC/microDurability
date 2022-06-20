@@ -29,7 +29,7 @@
         "fabric-api-base": "*",
         "fabric-rendering-v1": "*",
         "cloth-config2": ">=5.3.63",
-        "minecraft": ">=1.18"
+        "minecraft": ">=1.17"
     },
     "recommends": {
         "modmenu": "*"

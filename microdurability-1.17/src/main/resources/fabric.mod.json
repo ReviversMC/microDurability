@@ -21,7 +21,7 @@
     "environment": "client",
     "entrypoints": {
         "main": [
-            "com.github.reviversmc.microdurability.MicroDurability118"
+            "com.github.reviversmc.microdurability.MicroDurability117"
         ],
         "modmenu": [
             "com.github.reviversmc.microdurability.ModMenuIntegration"
@@ -32,7 +32,7 @@
     ],
     "depends": {
         "fabricloader": ">=0.12.9",
-        "minecraft": ">=1.18",
+        "minecraft": ">=1.17 <=1.18.2",
         "microdurability-core": "*"
     }
 }

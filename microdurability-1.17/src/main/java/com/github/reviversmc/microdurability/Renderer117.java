@@ -8,7 +8,7 @@ import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.VertexFormats;
 
-public class Renderer118 extends RendererBase {
+public class Renderer117 extends RendererBase {
 
     @Override
     protected void renderGuiQuad(BufferBuilder buffer, int x, int y, int width, int height, int red, int green,
