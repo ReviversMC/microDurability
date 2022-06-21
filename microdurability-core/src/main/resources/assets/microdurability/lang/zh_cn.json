@@ -16,7 +16,7 @@
   "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPointsBeforeWarning.@Tooltip": "\u8b66\u793a\u4ec5\u5728\u7269\u54c1\u8010\u4e45\u5ea6\u4e0e\u8010\u4e45\u767e\u5206\u6bd4\u5747\u4f4e\u4e8e\u9608\u503c\u65f6\u624d\u4f1a\u663e\u793a\uff01",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPercentageBeforeWarning": "\u8b66\u793a\u9608\u503c\uff08\u8010\u4e45\u767e\u5206\u6bd4\uff09",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPercentageBeforeWarning.@Tooltip": "\u8b66\u793a\u4ec5\u5728\u7269\u54c1\u8010\u4e45\u5ea6\u4e0e\u8010\u4e45\u767e\u5206\u6bd4\u5747\u4f4e\u4e8e\u9608\u503c\u65f6\u624d\u4f1a\u663e\u793a\uff01",
-  "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime": "\u95ea\u70c1\u901f\u5ea6\uff08\u5355\u4f4d\uff1a\u79d2\uff09\u005b\u6211\u4e5f\u4e0d\u77e5\u9053\u4e3a\u5565\u662f\u8fd9\u5355\u4f4d\u522b\u95ee\u6211\u005d",
+  "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime": "\u95ea\u70c1\u901f\u5ea6\uff08\u5355\u4f4d\uff1a\u79d2\uff09",
   "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime.@Tooltip": "\u8bbe\u7f6e\u4e3a\u0030\u53ef\u53d6\u6d88\u95ea\u70c1",
 
   "modmenu.summaryTranslation.microdurability": "\u6781\u7b80\u8010\u4e45\u663e\u793a\u6a21\u7ec4",
