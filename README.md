@@ -9,6 +9,4 @@
 
 ![Showcase image](./assets/preview-images/hotbar.png)
 
-microDurability is a minimal durability viewer that shows the durability bars of your armor right above the hotbar, without wasting any space. It can also warn you when your tools or armor are about to break.
-
-[<img src="https://i.imgur.com/Ol1Tcf8.png" alt="Requires Fabric API" width="170"/>](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
+**microDurability** is a minimal durability viewer that shows the durability bars of your armor right above the hotbar, without wasting any space. It can also warn you when your tools or armor are about to break.
