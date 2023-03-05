@@ -8,28 +8,28 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 
 public class MicroDurability implements ModInitializer {
-    public static ModConfig config;
+	public static ModConfig config;
 
-    @Override
-    public void onInitialize() {
-        AutoConfig.register(ModConfig.class, JanksonConfigSerializer::new);
-        config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-    }
+	@Override
+	public void onInitialize() {
+		AutoConfig.register(ModConfig.class, JanksonConfigSerializer::new);
+		config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+	}
 
-    public static boolean shouldWarn(ItemStack stack) {
-        if (stack == null || !stack.isDamageable()) {
-            return false;
-        }
-        if (config.lowDurabilityWarning.onlyOnMendingItems
-                && EnchantmentHelper.getLevel(Enchantments.MENDING, stack) <= 0) {
-            return false;
-        }
-        int durability = stack.getMaxDamage() - stack.getDamage();
+	public static boolean shouldWarn(ItemStack stack) {
+		if (stack == null || !stack.isDamageable()) {
+			return false;
+		}
 
-        boolean damageAbsoluteValueEnough = durability < config.lowDurabilityWarning.minDurabilityPointsBeforeWarning;
-        boolean damagePercentageEnough =
-                (durability * 100f / stack.getMaxDamage()) < config.lowDurabilityWarning.minDurabilityPercentageBeforeWarning;
+		if (config.lowDurabilityWarning.onlyOnMendingItems
+				&& EnchantmentHelper.getLevel(Enchantments.MENDING, stack) <= 0) {
+			return false;
+		}
 
-        return damageAbsoluteValueEnough && damagePercentageEnough;
-    }
+		int durability = stack.getMaxDamage() - stack.getDamage();
+		boolean damageAbsoluteValueEnough = durability < config.lowDurabilityWarning.minDurabilityPointsBeforeWarning;
+		boolean damagePercentageEnough = (durability * 100f / stack.getMaxDamage()) < config.lowDurabilityWarning.minDurabilityPercentageBeforeWarning;
+
+		return damageAbsoluteValueEnough && damagePercentageEnough;
+	}
 }
