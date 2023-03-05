@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 
 public abstract class RendererBase extends DrawableHelper implements HudRenderCallback {
 	private static final Identifier TEX = new Identifier("microdurability", "textures/gui/icons.png");
-	private final MinecraftClient mc;
+	protected final MinecraftClient mc;
 
 	private float time = 0;
 
@@ -29,7 +29,7 @@ public abstract class RendererBase extends DrawableHelper implements HudRenderCa
 
 		// Render held item low durability warning
 		if (MicroDurability.config.lowDurabilityWarning.displayWarningForTools) {
-			for (ItemStack item : mc.player.getItemsHand()) {
+			for (ItemStack item : getHandItems()) {
 				if (MicroDurability.shouldWarn(item)) {
 					if (MicroDurability.config.lowDurabilityWarning.blinkTime > 0
 							&& time < MicroDurability.config.lowDurabilityWarning.blinkTime * 20f) {
@@ -77,6 +77,8 @@ public abstract class RendererBase extends DrawableHelper implements HudRenderCa
 			}
 		}
 	}
+
+	public abstract Iterable<ItemStack> getHandItems();
 
 	public void renderWarning(MatrixStack matrixStack, int x, int y) {
 		RenderSystem.setShaderTexture(0, TEX);

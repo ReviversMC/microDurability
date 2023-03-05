@@ -6,6 +6,7 @@ import net.minecraft.client.render.BufferRenderer;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.VertexFormats;
+import net.minecraft.item.ItemStack;
 
 public class Renderer119 extends RendererBase {
 	@SuppressWarnings("checkstyle:SingleSpaceSeparatorCheck")
@@ -18,5 +19,10 @@ public class Renderer119 extends RendererBase {
 		buffer.vertex(x + width, y + height, 0.0D).color(red, green, blue, alpha).next();
 		buffer.vertex(x + width, y,          0.0D).color(red, green, blue, alpha).next();
 		BufferRenderer.drawWithShader(buffer.end());
+	}
+
+	@Override
+	public Iterable<ItemStack> getHandItems() {
+		return mc.player.getHandItems();
 	}
 }
