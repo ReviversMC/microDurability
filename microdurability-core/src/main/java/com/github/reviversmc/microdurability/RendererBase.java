@@ -5,13 +5,14 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 public abstract class RendererBase extends DrawableHelper implements HudRenderCallback {
-    private static final Identifier TEX = new Identifier("microdurability", "textures/gui/icons.png");
+    protected static final Identifier TEX = new Identifier("microdurability", "textures/gui/icons.png");
     private final MinecraftClient mc;
 
     private float time = 0;
@@ -28,7 +29,7 @@ public abstract class RendererBase extends DrawableHelper implements HudRenderCa
 
         // Render held item low durability warning
         if (MicroDurability.config.lowDurabilityWarning.displayWarningForTools) {
-            for (ItemStack item : mc.player.getItemsHand()) {
+            for (ItemStack item : getHandItems(mc.player)) {
                 if (MicroDurability.shouldWarn(item)) {
                     if (MicroDurability.config.lowDurabilityWarning.blinkTime > 0
                             && time < MicroDurability.config.lowDurabilityWarning.blinkTime * 20f) {
@@ -84,9 +85,7 @@ public abstract class RendererBase extends DrawableHelper implements HudRenderCa
         if (!MicroDurability.config.armorBars.displayBarsForUndamagedArmor && !stack.isItemBarVisible()) return;
         if (!stack.isDamageable()) return;
 
-        RenderSystem.disableDepthTest();
-        RenderSystem.disableTexture();
-        RenderSystem.disableBlend();
+        disableRenderSystems();
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferBuilder = tessellator.getBuffer();
         int width = stack.getItemBarStep();
@@ -109,10 +108,13 @@ public abstract class RendererBase extends DrawableHelper implements HudRenderCa
             alpha = 255;
         }
         this.renderGuiQuad(bufferBuilder, x, y, width, 1, red, green, blue, alpha);
-        RenderSystem.enableBlend();
-        RenderSystem.enableTexture();
-        RenderSystem.enableDepthTest();
+        enableRenderSystems();
     }
+
+    protected abstract void enableRenderSystems();
+    protected abstract void disableRenderSystems();
+
+    protected abstract Iterable<ItemStack> getHandItems(ClientPlayerEntity e);
 
     protected abstract void renderGuiQuad(BufferBuilder buffer, int x, int y, int width, int height, int red, int green, int blue, int alpha);
 }
