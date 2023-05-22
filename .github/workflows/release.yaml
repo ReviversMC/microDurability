@@ -38,7 +38,7 @@ jobs:
       #     repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish 1.17 version
-        uses: Kir-Antipov/mc-publish@v3.2
+        uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: JW3bGnLO
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
@@ -70,7 +70,7 @@ jobs:
             modmenu       | recommends
 
       - name: Publish 1.19 version
-        uses: Kir-Antipov/mc-publish@v3.2
+        uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: JW3bGnLO
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
