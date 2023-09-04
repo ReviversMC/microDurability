@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
 
-<!-- ReviversMC checkstyle v1.1 -->
+<!-- ReviversMC checkstyle v1.2 -->
 
 <module name="Checker">
 	<property name="charset" value="UTF-8"/>
@@ -67,6 +67,9 @@
 		<property name="format" value="(?&lt;=\n)([\t]+)\}\r?\n\1(?:[^\r\n\}cd]|c[^\r\na]|ca[^\r\ns]|d[^\r\ne]|de[^\r\nf])"/>
 		<property name="message" value="missing blank line after block at same indentation level"/>
 	</module>
+
+	<!-- Allow `@SuppressWarnings("checkstyle:...")` to suppress certain checkstyle errors -->
+	<module name="SuppressWarningsFilter"/>
 
 	<module name="TreeWalker">
 		<!-- Ensure all imports are ship shape -->
@@ -174,5 +177,8 @@
 		<module name="MatchXpath">
 			<property name="query" value="//VARIABLE_DEF[./TYPE/IDENT[@text='var'] and not(./ASSIGN/EXPR/LITERAL_NEW)]"/>
 		</module>
+
+		<!-- Required counterpart to `SuppressWarningsFilter` -->
+		<module name="SuppressWarningsHolder"/>
 	</module>
 </module>
