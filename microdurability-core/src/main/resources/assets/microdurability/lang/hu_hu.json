@@ -1,0 +1,24 @@
+{
+    "text.autoconfig.microdurability.title": "microDurability Konfiguráció",
+  
+    "text.autoconfig.microdurability.category.armorBars": "Páncél Sávok",
+    "text.autoconfig.microdurability.option.armorBars.displayArmorBars": "Páncél sávok megjelenítése",
+    "text.autoconfig.microdurability.option.armorBars.displayBarsForUndamagedArmor": "Sávok megjelenítése sértetlen páncélra",
+    "text.autoconfig.microdurability.option.armorBars.useCustomBarColorForUndamagedArmor": "Egyéni sávszín használata sértetlen páncélra",
+    "text.autoconfig.microdurability.option.armorBars.useCustomBarColorForUndamagedArmor.@Tooltip": "Ha egy páncélrész sértetlen, a sávja a meghatározott egyéni színű lesz.",
+    "text.autoconfig.microdurability.option.armorBars.customBarColorForUndamagedArmor": "Egyéni sávszín sértetlen páncélra (#ARGB formátum)",
+  
+    "text.autoconfig.microdurability.category.lowDurabilityWarning": "Alacsony Élettartam Figyelmeztetés",
+    "text.autoconfig.microdurability.option.lowDurabilityWarning.displayWarningForTools": "Figyelmeztetés megjelenítése szerszámokra",
+    "text.autoconfig.microdurability.option.lowDurabilityWarning.displayWarningForArmor": "Figyelmeztetés megjelenítése páncélra",
+    "text.autoconfig.microdurability.option.lowDurabilityWarning.onlyOnMendingItems": "Megjelenítés csak Javításos tárgyakon",
+    "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPointsBeforeWarning": "Minimális élettartam-pontok a figyelmeztetés megjelenítése előtt",
+    "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPointsBeforeWarning.@Tooltip": "Egy tárgy élettartamának a minimális pontérték és a minimális százalékérték alatt kell lennie ahhoz, hogy a figyelmeztetés megjelenjen!",
+    "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPercentageBeforeWarning": "Minimális élettartam százaléka a figyelmeztetés megjelenítése előtt",
+    "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPercentageBeforeWarning.@Tooltip": "Egy tárgy élettartamának a minimális pontérték és a minimális százalékérték alatt kell lennie ahhoz, hogy a figyelmeztetés megjelenjen!",
+    "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime": "Villogási sebesség (másodpercben)",
+    "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime.@Tooltip": "Állítsd 0-ra a villogás kikapcsolásához.",
+  
+    "modmenu.summaryTranslation.microdurability": "Egy nagyon minimális élettartam mutató",
+    "modmenu.descriptionTranslation.microdurability": "Egy nagyon minimális élettartam mutató"
+  }
