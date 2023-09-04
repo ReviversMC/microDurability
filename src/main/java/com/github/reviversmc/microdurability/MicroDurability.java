@@ -8,10 +8,13 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 
 public class MicroDurability implements ModInitializer {
+	public static Renderer renderer;
     public static ModConfig config;
 
     @Override
     public void onInitialize() {
+		renderer = new Renderer();
+
         AutoConfig.register(ModConfig.class, JanksonConfigSerializer::new);
         config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
     }

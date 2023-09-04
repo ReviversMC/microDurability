@@ -25,20 +25,11 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
 
-      - name: Build 1.17 project
-        run: ./gradlew :microdurability-1.17:build --no-daemon --stacktrace
+      - name: Build the mod
+        run: ./gradlew :build --no-daemon --stacktrace
 
-      - name: Build 1.19 project
-        run: ./gradlew :microdurability-1.19:build --no-daemon --stacktrace
-
-      # - name: Upload GitHub release
-      #   uses: AButler/upload-release-assets@v2.0
-      #   with:
-      #     files: "**/build/libs/*.jar;!**/build/libs/*-sources.jar;!**/build/libs/*-dev.jar;!microdurability-core/"
-      #     repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish 1.17 version
-        uses: Kir-Antipov/mc-publish@v3.2
+      - name: Publish mod
+        uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: JW3bGnLO
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
@@ -48,49 +39,18 @@ jobs:
 
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-          files-primary: microdurability-1.17/build/libs/!(*-@(dev|sources)).jar
+          files-primary: build/libs/!(*-@(dev|sources)).jar
+          files-secondary: null
 
-          name: microDurability 0.3.6 for 1.17 and 1.18
-          version: 0.3.6+1.17
+          name: 0.3.6 for MC 1.19.4
+          version: 0.3.6+1.19.4
           version-type: release
 
           loaders: |
             fabric
 
           game-versions: |
-            1.17
-            1.17.1
-            1.18
-            1.18.1
-            1.18.2
-
-          dependencies: |
-            fabric-api    | depends
-            cloth-config  | depends
-            modmenu       | recommends
-
-      - name: Publish 1.19 version
-        uses: Kir-Antipov/mc-publish@v3.2
-        with:
-          modrinth-id: JW3bGnLO
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-
-          curseforge-id: 409222
-          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-          files-primary: microdurability-1.19/build/libs/!(*-@(dev|sources)).jar
-
-          name: microDurability 0.3.6 for 1.19
-          version: 0.3.6+1.19
-          version-type: release
-
-          loaders: |
-            fabric
-
-          game-versions: |
-            1.19
+            1.19.4
 
           dependencies: |
             fabric-api    | depends
