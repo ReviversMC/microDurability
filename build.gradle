@@ -78,10 +78,8 @@ dependencies {
 
 		modRuntimeOnly "maven.modrinth:sodium:${project.sodium_version}"
 		modRuntimeOnly "maven.modrinth:lithium:${project.lithium_version}"
-		modRuntimeOnly "maven.modrinth:starlight:${project.starlight_version}"
 		modRuntimeOnly "maven.modrinth:ferrite-core:${project.ferritecore_version}"
-		modRuntimeOnly "curse.maven:smooth-boot-415758:${project.smoothboot_version}"
-		modRuntimeOnly "curse.maven:no-fade-452768:${project.no_fade_version}"
+		modRuntimeOnly "maven.modrinth:threadtweak:${project.threadtweak_version}"
 	}
 }
 

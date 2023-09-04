@@ -4,18 +4,17 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawableHelper;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.BufferRenderer;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.VertexFormats;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-public class Renderer extends DrawableHelper implements HudRenderCallback {
+public class Renderer implements HudRenderCallback {
 	private static final Identifier TEX = new Identifier("microdurability", "textures/gui/icons.png");
 	private final MinecraftClient mc;
 	private float time = 0;
@@ -25,7 +24,7 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
 	}
 
 	@Override
-	public void onHudRender(MatrixStack matrixStack, float delta) {
+	public void onHudRender(DrawContext context, float delta) {
 		int scaledWidth = mc.getWindow().getScaledWidth();
 		int scaledHeight = mc.getWindow().getScaledHeight();
 		time = (time + delta) % (MicroDurability.config.lowDurabilityWarning.blinkTime * 40f);
@@ -39,7 +38,7 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
 						break;
 					}
 
-					renderWarning(matrixStack, scaledWidth/2 - 2, scaledHeight/2 - 18); // TODO: This doesn't align with the crosshair at some resolutions
+					renderWarning(context, scaledWidth/2 - 2, scaledHeight/2 - 18); // TODO: This doesn't align with the crosshair at some resolutions
 					break;
 				}
 			}
@@ -64,7 +63,7 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
 						break;
 					}
 
-					renderWarning(matrixStack, x+5, y-12);
+					renderWarning(context, x+5, y-12);
 					canRenderArmorBar = false;
 					break;
 				}
@@ -81,10 +80,8 @@ public class Renderer extends DrawableHelper implements HudRenderCallback {
 		}
 	}
 
-	private void renderWarning(MatrixStack matrixStack, int x, int y) {
-		RenderSystem.setShaderTexture(0, TEX);
-		DrawableHelper.drawTexture(matrixStack, x, y, 0, 0, 3, 11);
-		RenderSystem.setShaderTexture(0, GUI_ICONS_TEXTURE);
+	private void renderWarning(DrawContext context, int x, int y) {
+		context.drawTexture(TEX, x, y, 0, 0, 3, 11);
 	}
 
 	private void renderBar(ItemStack stack, int x, int y) {
