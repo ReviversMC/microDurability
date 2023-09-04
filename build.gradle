@@ -5,7 +5,7 @@ plugins {
 }
 
 
-version = project.mod_version
+version = project.mod_version + '+1.20'
 group = project.maven_group
 
 base {
