@@ -10,9 +10,6 @@ dependencies {
 	modImplementation(fabricApi.module('fabric-api-base', project.fabric_api_version_1_17))
 	modImplementation(fabricApi.module('fabric-rendering-v1', project.fabric_api_version_1_17))
 
-	// Use the full Fabric API while debugging, otherwise ModMenu complains
-	// modRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version_1_17}"
-
 	// Other mods
 	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version_1_17}"
 	modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version_1_17}") {
