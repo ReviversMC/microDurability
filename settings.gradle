@@ -1,16 +1,16 @@
 pluginManagement {
-    repositories {
-        maven {
-            name = 'Fabric'
-            url = 'https://maven.fabricmc.net/'
-        }
-        // Quiltflower
-        maven {
-            name = 'Cotton'
-            url = 'https://server.bbkr.space/artifactory/libs-release/'
-        }
-        gradlePluginPortal()
-    }
+	repositories {
+		maven {
+			name = 'Fabric'
+			url = 'https://maven.fabricmc.net/'
+		}
+		gradlePluginPortal()
+		mavenCentral()
+	}
+	plugins {
+		id 'fabric-loom' version "${fabric_loom_version}"
+		id 'com.diffplug.spotless' version "${spotless_version}"
+	}
 }
 
 rootProject.name = 'microdurability'

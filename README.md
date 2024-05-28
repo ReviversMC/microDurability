@@ -1,4 +1,4 @@
-<img height="70" align="right" src="./assets/microdurability-icon-transparent.png">
+<img height="70" align="right" src="./assets/icon-transparent.png">
 
 # microDurability
 [![CurseForge downloads](https://cf.way2muchnoise.eu/microdurability.svg)](https://www.curseforge.com/minecraft/mc-mods/microdurability)

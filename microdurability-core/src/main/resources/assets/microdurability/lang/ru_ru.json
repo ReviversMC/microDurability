@@ -1,24 +1,24 @@
 {
-  "text.autoconfig.microdurability.title": "Настройки microDurability",
+	"text.autoconfig.microdurability.title": "Настройки microDurability",
 
-  "text.autoconfig.microdurability.category.armorBars": "Индикаторы брони",
-  "text.autoconfig.microdurability.option.armorBars.displayArmorBars": "Отображать индикаторы брони",
-  "text.autoconfig.microdurability.option.armorBars.displayBarsForUndamagedArmor": "Отображать индикаторы для неповреждённой брони",
-  "text.autoconfig.microdurability.option.armorBars.useCustomBarColorForUndamagedArmor": "Использовать свой цвет на индикаторах для неповреждённой брони",
-  "text.autoconfig.microdurability.option.armorBars.useCustomBarColorForUndamagedArmor.@Tooltip": "Если броня не имеет повреждений, её индикатор будет иметь указанный ниже цвет.",
-  "text.autoconfig.microdurability.option.armorBars.customBarColorForUndamagedArmor": "Свой цвет для индикаторов для неповреждённой брони (формат #ARGB)",
+	"text.autoconfig.microdurability.category.armorBars": "Индикаторы брони",
+	"text.autoconfig.microdurability.option.armorBars.displayArmorBars": "Отображать индикаторы брони",
+	"text.autoconfig.microdurability.option.armorBars.displayBarsForUndamagedArmor": "Отображать индикаторы для неповреждённой брони",
+	"text.autoconfig.microdurability.option.armorBars.useCustomBarColorForUndamagedArmor": "Использовать свой цвет на индикаторах для неповреждённой брони",
+	"text.autoconfig.microdurability.option.armorBars.useCustomBarColorForUndamagedArmor.@Tooltip": "Если броня не имеет повреждений, её индикатор будет иметь указанный ниже цвет.",
+	"text.autoconfig.microdurability.option.armorBars.customBarColorForUndamagedArmor": "Свой цвет для индикаторов для неповреждённой брони (формат #ARGB)",
 
-  "text.autoconfig.microdurability.category.lowDurabilityWarning": "Предупреждение о низкой прочности",
-  "text.autoconfig.microdurability.option.lowDurabilityWarning.displayWarningForTools": "Отображать предупреждение для инструментов",
-  "text.autoconfig.microdurability.option.lowDurabilityWarning.displayWarningForArmor": "Отображать предупреждение для брони",
-  "text.autoconfig.microdurability.option.lowDurabilityWarning.onlyOnMendingItems": "Отображать только на предметах с зачарованием \"Починка\"",
-  "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPointsBeforeWarning": "Минимальный уровень прочности до показа предупреждения",
-  "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPointsBeforeWarning.@Tooltip": "Прочность предмета должна быть ниже минимального уровня и процента прочности для показа предупреждения.",
-  "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPercentageBeforeWarning": "Минимальный % прочности до показа предупреждения",
-  "text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPercentageBeforeWarning.@Tooltip": "Прочность предмета должна быть ниже минимального уровня и процента прочности для показа предупреждения.",
-  "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime": "Задержка между миганиями (в секундах)",
-  "text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime.@Tooltip": "Поставьте значение 0, чтобы отключить мигание.",
+	"text.autoconfig.microdurability.category.lowDurabilityWarning": "Предупреждение о низкой прочности",
+	"text.autoconfig.microdurability.option.lowDurabilityWarning.displayWarningForTools": "Отображать предупреждение для инструментов",
+	"text.autoconfig.microdurability.option.lowDurabilityWarning.displayWarningForArmor": "Отображать предупреждение для брони",
+	"text.autoconfig.microdurability.option.lowDurabilityWarning.onlyOnMendingItems": "Отображать только на предметах с зачарованием \"Починка\"",
+	"text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPointsBeforeWarning": "Минимальный уровень прочности до показа предупреждения",
+	"text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPointsBeforeWarning.@Tooltip": "Прочность предмета должна быть ниже минимального уровня и процента прочности для показа предупреждения.",
+	"text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPercentageBeforeWarning": "Минимальный % прочности до показа предупреждения",
+	"text.autoconfig.microdurability.option.lowDurabilityWarning.minDurabilityPercentageBeforeWarning.@Tooltip": "Прочность предмета должна быть ниже минимального уровня и процента прочности для показа предупреждения.",
+	"text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime": "Задержка между миганиями (в секундах)",
+	"text.autoconfig.microdurability.option.lowDurabilityWarning.blinkTime.@Tooltip": "Поставьте значение 0, чтобы отключить мигание.",
 
-  "modmenu.summaryTranslation.microdurability": "Очень минималистичный показатель прочности",
-  "modmenu.descriptionTranslation.microdurability": "Очень минималистичный показатель прочности"
+	"modmenu.summaryTranslation.microdurability": "Очень минималистичный показатель прочности",
+	"modmenu.descriptionTranslation.microdurability": "Очень минималистичный показатель прочности"
 }
