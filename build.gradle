@@ -51,7 +51,6 @@ subprojects {
 		modRuntimeOnly {
 			transitive = true
 			exclude module: 'fabric-loader'
-			exclude module: 'fabric-api-base'
 		}
 	}
 

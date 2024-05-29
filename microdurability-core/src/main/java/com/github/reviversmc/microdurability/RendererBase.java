@@ -1,7 +1,6 @@
 package com.github.reviversmc.microdurability;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.fabricmc.loader.api.FabricLoader;
 
 import net.minecraft.client.MinecraftClient;
@@ -13,7 +12,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-public abstract class RendererBase extends DrawableHelper implements HudRenderCallback {
+public abstract class RendererBase extends DrawableHelper {
 	protected static final Identifier TEX = new Identifier("microdurability", "textures/gui/icons.png");
 	private final MinecraftClient mc;
 	private float time = 0;
@@ -22,7 +21,6 @@ public abstract class RendererBase extends DrawableHelper implements HudRenderCa
 		mc = MinecraftClient.getInstance();
 	}
 
-	@Override
 	public void onHudRender(MatrixStack matrixStack, float delta) {
 		int scaledWidth = mc.getWindow().getScaledWidth();
 		int scaledHeight = mc.getWindow().getScaledHeight();
