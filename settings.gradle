@@ -9,7 +9,6 @@ pluginManagement {
     }
 	plugins {
 		id 'fabric-loom' version "${fabric_loom_version}"
-		id 'io.github.juuxel.loom-vineflower' version "${loom_vineflower_version}"
 	}
 }
 

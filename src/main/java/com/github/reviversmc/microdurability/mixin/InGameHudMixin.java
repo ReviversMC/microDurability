@@ -14,7 +14,7 @@ public class InGameHudMixin {
 	@Inject(
 			at = @At(
 					value = "INVOKE",
-					target = "Lnet/minecraft/client/gui/hud/InGameHud;renderStatusBars(Lnet/minecraft/client/gui/DrawContext;)V"
+					target = "Lnet/minecraft/client/gui/LayeredDrawer;render(Lnet/minecraft/client/gui/DrawContext;F)V"
 			),
 			method = "render"
 	)

@@ -1,23 +1,13 @@
 plugins {
 	id 'fabric-loom'
-	id 'io.github.juuxel.loom-vineflower'
-	id 'checkstyle'
 }
 
-
-version = project.mod_version + '+1.20'
+version = project.mod_version + '+1.20.6'
 group = project.maven_group
 
 base {
 	archivesName = project.archives_base_name
 }
-
-
-checkstyle {
-	configFile = project.file('checkstyle.xml')
-	toolVersion = project.checkstyle_version
-}
-
 
 repositories {
 	if (project.use_third_party_mods == 'true') {
@@ -56,6 +46,7 @@ dependencies {
     // Required Fabric API modules
     modImplementation(fabricApi.module('fabric-api-base', project.fabric_api_version))
     modImplementation(fabricApi.module('fabric-rendering-v1', project.fabric_api_version))
+	modRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
     // ModMenu integration
     modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
@@ -104,12 +95,12 @@ tasks.withType(JavaCompile).configureEach {
 	it.options.encoding = 'UTF-8'
 
 	// Minecraft 1.18-pre2 upwards uses Java 17.
-	it.options.release = 17
+	it.options.release = 21
 }
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
 
 	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
 	// if it is present. If you remove this line, sources will not be generated.
