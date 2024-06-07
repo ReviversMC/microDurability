@@ -25,6 +25,7 @@ public class Renderer implements HudRenderCallback {
 
 	@Override
 	public void onHudRender(DrawContext context, float delta) {
+		if (mc.options.hudHidden) return;
 		int scaledWidth = mc.getWindow().getScaledWidth();
 		int scaledHeight = mc.getWindow().getScaledHeight();
 		time = (time + delta) % (MicroDurability.config.lowDurabilityWarning.blinkTime * 40f);
