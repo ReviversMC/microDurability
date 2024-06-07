@@ -14,9 +14,9 @@ public class InGameHudMixin {
 	@Inject(
 			at = @At(
 					value = "INVOKE",
-					target = "Lnet/minecraft/client/gui/LayeredDrawer;render(Lnet/minecraft/client/gui/DrawContext;F)V"
+					target = "Lnet/minecraft/client/gui/hud/InGameHud;renderStatusBars(Lnet/minecraft/client/gui/DrawContext;)V"
 			),
-			method = "render"
+			method = "renderMainHud"
 	)
 	public void renderMicroDurability(DrawContext context, float delta, CallbackInfo callbackInfo) {
 		MicroDurability.renderer.onHudRender(context, delta);
