@@ -1,7 +1,9 @@
-version += '+1.19.4'
+base {
+	archivesName = archivesName.get() + '-compat-1.19.4'
+}
 
 dependencies {
-	include implementation(project(path: ':microdurability-core', configuration: 'namedElements'))
+	api project(path: ':microdurability-1.19', configuration: 'namedElements')
 
 	minecraft "com.mojang:minecraft:${project.minecraft_version_1_19_4}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings_1_19_4}:v2"

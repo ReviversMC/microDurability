@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' apply false
+	id 'fabric-loom'
 	id 'checkstyle'
 	id 'com.diffplug.spotless'
 }
@@ -19,7 +19,7 @@ try {
 }
 
 
-subprojects {
+allprojects {
 	apply plugin: 'fabric-loom'
 	apply plugin: 'checkstyle'
 	apply plugin: 'com.diffplug.spotless'
@@ -94,6 +94,9 @@ subprojects {
 				programArg "$height"
 			}
 		}
+		mixin {
+			useLegacyMixinAp = false
+		}
 	}
 
 
@@ -125,15 +128,33 @@ subprojects {
 
 	jar {
 		from rootProject.file('LICENSE')
-
-		if (project.name != 'microdurability-core') {
-			into "assets/${project.archivesBaseName}", {
-				from rootProject.file('assets/icon.png')
-			}
-		}
 	}
 
 	build.doFirst {
 		use_third_party_mods = 'false'
+	}
+}
+
+
+dependencies {
+	include api(project(path: ':microdurability-core', configuration: 'namedElements'))
+	include api(project(path: ':microdurability-1.17', configuration: 'namedElements'))
+	include api(project(path: ':microdurability-1.19', configuration: 'namedElements'))
+	include api(project(path: ':microdurability-1.19.4', configuration: 'namedElements'))
+	include api(project(path: ':microdurability-1.20', configuration: 'namedElements'))
+
+	modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version_1_20}"
+	modRuntimeOnly("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version_1_20}") {
+		exclude(group: 'net.fabricmc.fabric-api')
+	}
+
+	minecraft "com.mojang:minecraft:${minecraft_version_1_20}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings_1_20}:v2"
+}
+
+
+processResources {
+	from("${rootDir}/assets/icon.png") {
+		into "assets/microdurability/"
 	}
 }

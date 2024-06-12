@@ -22,14 +22,8 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v3
 
-      - name: Build 1.17 project
-        run: ./gradlew :microdurability-1.17:build --stacktrace
-
-      - name: Build 1.19 project
-        run: ./gradlew :microdurability-1.19:build --stacktrace
-
-      - name: Build 1.19.4 project
-        run: ./gradlew :microdurability-1.19.4:build --stacktrace
+      - name: Build
+        run: ./gradlew :build --stacktrace
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4

@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 
-import com.github.reviversmc.microdurability.MicroDurability120;
+import com.github.reviversmc.microdurability.MicroDurability;
 
 @Mixin(InGameHud.class)
 public class InGameHudMixin120 {
@@ -24,7 +24,7 @@ public class InGameHudMixin120 {
 			method = "render"
 	)
 	private void renderArmorArea(DrawContext context, float delta, CallbackInfo callbackInfo) {
-		MicroDurability120.renderer.renderArmorArea(context, ticks, delta);
+		MicroDurability.renderer.renderArmorArea(context, ticks, delta);
 	}
 
 	@Inject(
@@ -35,6 +35,6 @@ public class InGameHudMixin120 {
 			method = "render"
 	)
 	private void renderHeldItemExclamationMark(DrawContext context, float delta, CallbackInfo callbackInfo) {
-		MicroDurability120.renderer.renderHeldItemLowDurabilityWarning(context, ticks, delta);
+		MicroDurability.renderer.renderHeldItemLowDurabilityWarning(context, ticks, delta);
 	}
 }

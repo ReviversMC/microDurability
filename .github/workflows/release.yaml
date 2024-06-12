@@ -25,13 +25,10 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v3
 
-      - name: Build 1.17 project
-        run: ./gradlew :microdurability-1.17:build --stacktrace
+      - name: Build
+        run: ./gradlew :build --stacktrace
 
-      - name: Build 1.19 project
-        run: ./gradlew :microdurability-1.19:build --stacktrace
-
-      - name: Publish 1.17 version
+      - name: Publish
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: JW3bGnLO
@@ -39,9 +36,9 @@ jobs:
           curseforge-id: 409222
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          files: microdurability-1.17/build/libs/!(*-@(dev|sources)).jar
-          name: 0.3.6 for MC 1.17 and 1.18
-          version: 0.3.6+1.17
+          files: build/libs/!(*-@(dev|sources)).jar
+          name: 0.3.6 for MC 1.17 to MC 1.20.4
+          version: 0.3.6+1.17-1.20
           version-type: release
           loaders: |
             fabric
@@ -51,50 +48,10 @@ jobs:
             1.18
             1.18.1
             1.18.2
-          dependencies: |
-            fabric-api    | depends
-            cloth-config  | depends
-            modmenu       | recommends
-
-      - name: Publish 1.19 version
-        uses: Kir-Antipov/mc-publish@v3.3
-        with:
-          modrinth-id: JW3bGnLO
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-          curseforge-id: 409222
-          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          files: microdurability-1.19/build/libs/!(*-@(dev|sources)).jar
-          name: 0.3.6 for MC 1.19 to 1.19.3
-          version: 0.3.6+1.19
-          version-type: release
-          loaders: |
-            fabric
-          game-versions: |
             1.19
             1.19.1
             1.19.2
             1.19.3
-          dependencies: |
-            fabric-api    | depends
-            cloth-config  | depends
-            modmenu       | recommends
-
-      - name: Publish 1.19.4 version
-        uses: Kir-Antipov/mc-publish@v3.3
-        with:
-          modrinth-id: JW3bGnLO
-          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-          curseforge-id: 409222
-          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          files: microdurability-1.19.4/build/libs/!(*-@(dev|sources)).jar
-          name: 0.3.6 for MC 1.19.4 to 1.20.4
-          version: 0.3.6+1.19.4
-          version-type: release
-          loaders: |
-            fabric
-          game-versions: |
             1.19.4
             1.20
             1.20.1
@@ -102,6 +59,5 @@ jobs:
             1.20.3
             1.20.4
           dependencies: |
-            fabric-api    | depends
             cloth-config  | depends
             modmenu       | recommends

@@ -12,25 +12,25 @@ import net.fabricmc.loader.api.VersionParsingException;
 import com.github.reviversmc.microdurability.MicroDurability;
 
 public class DoubleHotbarCompat {
-	private static final Version INSTALLED_VERSION;
-	private static final Version V_1_1_0;
-	private static final Version V_1_2_0;
-	private static final Version V_1_3_1;
+	private static final Version installedVersion;
+	private static final Version v_1_1_0;
+	private static final Version v_1_2_0;
+	private static final Version v_1_3_1;
 	private static final Map<String, Boolean> configFieldErrored = new LinkedHashMap<>();
 	private static boolean fatalError = false;
 	private static Supplier<Integer> shiftSupplier;
 
 	static {
-		INSTALLED_VERSION = FabricLoader.getInstance()
+		installedVersion = FabricLoader.getInstance()
 				.getModContainer("double_hotbar")
 				.orElseThrow()
 				.getMetadata()
 				.getVersion();
 
 		try {
-			V_1_1_0 = Version.parse("1.1.0");
-			V_1_2_0 = Version.parse("1.2.0");
-			V_1_3_1 = Version.parse("1.3.0");
+			v_1_1_0 = Version.parse("1.1.0");
+			v_1_2_0 = Version.parse("1.2.0");
+			v_1_3_1 = Version.parse("1.3.0");
 		} catch (VersionParsingException e) {
 			throw new RuntimeException(e);
 		}
@@ -56,7 +56,7 @@ public class DoubleHotbarCompat {
 			Field shift = null;
 			Field disabled = null;
 
-			if (INSTALLED_VERSION.compareTo(V_1_1_0) >= 0) {
+			if (installedVersion.compareTo(v_1_1_0) >= 0) {
 				try {
 					secondBar = config.getDeclaredField("displayDoubleHotbar");
 					secondBar.setAccessible(true);
@@ -65,7 +65,7 @@ public class DoubleHotbarCompat {
 				}
 			}
 
-			if (INSTALLED_VERSION.compareTo(V_1_2_0) >= 0) {
+			if (installedVersion.compareTo(v_1_2_0) >= 0) {
 				try {
 					shift = config.getDeclaredField("shift");
 					shift.setAccessible(true);
@@ -74,7 +74,7 @@ public class DoubleHotbarCompat {
 				}
 			}
 
-			if (INSTALLED_VERSION.compareTo(V_1_3_1) >= 0) {
+			if (installedVersion.compareTo(v_1_3_1) >= 0) {
 				try {
 					disabled = config.getDeclaredField("disableMod");
 					disabled.setAccessible(true);

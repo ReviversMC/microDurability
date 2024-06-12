@@ -2,9 +2,7 @@
 	"required": true,
 	"package": "com.github.reviversmc.microdurability.mixin",
 	"compatibilityLevel": "JAVA_17",
-	"client": [
-		"InGameHudMixin1194"
-	],
+	"plugin": "com.github.reviversmc.microdurability.MixinProvider120",
 	"injectors": {
 		"defaultRequire": 1
 	}

@@ -1,4 +1,4 @@
-# ReviversMC editorconfig v1.0
+# ReviversMC editorconfig v1.1
 
 root = true
 
@@ -15,6 +15,9 @@ indent_size = 2
 
 [*.{yml,yaml,properties}]
 indent_style = space
+
+[*.{tiny,mapping,mappings,csrg,tsrg}]
+trim_trailing_whitespace = false
 
 [*.bat]
 end_of_line = crlf

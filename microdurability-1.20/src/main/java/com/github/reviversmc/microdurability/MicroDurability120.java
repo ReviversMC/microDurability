@@ -1,12 +1,20 @@
 package com.github.reviversmc.microdurability;
 
-import net.fabricmc.api.ModInitializer;
+import java.util.function.Supplier;
 
-public class MicroDurability120 implements ModInitializer {
-	public static RendererBase renderer;
+import com.github.reviversmc.microdurability.mccompat.McVersionCompatInitializer;
+import com.github.reviversmc.microdurability.mccompat.McVersionHelper;
+
+public class MicroDurability120 extends McVersionCompatInitializer {
+	static final Supplier<Boolean> IS_COMPATIBLE = () -> McVersionHelper.isWithin("1.20", McVersionHelper.INFINITY);
 
 	@Override
-	public void onInitialize() {
-		renderer = new Renderer120();
+	public boolean isCompatible() {
+		return IS_COMPATIBLE.get();
+	}
+
+	@Override
+	protected void initialize() {
+		MicroDurability.renderer = new Renderer120();
 	}
 }

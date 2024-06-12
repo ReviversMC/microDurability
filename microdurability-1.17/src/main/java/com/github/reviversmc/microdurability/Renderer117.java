@@ -3,18 +3,21 @@ package com.github.reviversmc.microdurability;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.BufferRenderer;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-public class Renderer117 extends RendererBase {
-	private static final DrawableHelper drawableHelper = new DrawableHelper() { };
+public class Renderer117 extends Renderer {
+	// Of type Object to prevent crashes on later MC versions where DrawableHelper doesn't exist
+	private Object drawableHelper;
+
+	void init() {
+		drawableHelper = new DrawableHelper() { };
+	}
 
 	@Override
 	protected void disableRenderSystems() {
@@ -33,13 +36,8 @@ public class Renderer117 extends RendererBase {
 	@Override
 	protected void drawWarningTexture(Identifier texture, Object context, int x, int y, int u, int v, int width, int height) {
 		RenderSystem.setShaderTexture(0, texture);
-		drawableHelper.drawTexture((MatrixStack) context, x, y, u, v, width, height);
+		((DrawableHelper) drawableHelper).drawTexture((MatrixStack) context, x, y, u, v, width, height);
 		RenderSystem.setShaderTexture(0, DrawableHelper.GUI_ICONS_TEXTURE);
-	}
-
-	@Override
-	protected Iterable<ItemStack> getHandItems(ClientPlayerEntity player) {
-		return player.getItemsHand();
 	}
 
 	@Override

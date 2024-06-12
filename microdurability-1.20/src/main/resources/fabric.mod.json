@@ -1,26 +1,12 @@
 {
 	"schemaVersion": 1,
-	"id": "microdurability",
+	"id": "microdurability-compat-1-20",
 	"version": "${version}",
-	"name": "microDurability",
-	"description": "A very minimal durability viewer",
-	"authors": [
-		"NebelNidas",
-		"dzwdz"
-	],
-	"contributors": [
-		"BlockBuilder57"
-	],
-	"contact": {
-		"homepage": "https://www.curseforge.com/minecraft/mc-mods/microdurability",
-		"sources": "https://github.com/ReviversMC/microDurability",
-		"issues": "https://github.com/ReviversMC/microDurability/issues"
-	},
-	"icon": "assets/microdurability/icon.png",
+	"name": "microDurability 1.20 Compat",
 	"license": "MPL-2.0",
 	"environment": "client",
 	"entrypoints": {
-		"main": [
+		"microdurability": [
 			"com.github.reviversmc.microdurability.MicroDurability120"
 		],
 		"modmenu": [
@@ -28,10 +14,19 @@
 		]
 	},
 	"mixins": [
-		"microdurability.mixins.json"
+		"microdurability120.mixins.json"
 	],
 	"depends": {
-		"minecraft": ">=1.20-",
-		"microdurability-core": "*"
+		"fabricloader": ">=0.12.9",
+		"minecraft": ">=1.20",
+		"microdurability-compat-1-19-4": "*"
+	},
+	"custom": {
+		"modmenu": {
+			"badges": ["library"],
+			"parent": {
+				"id": "microdurability"
+			}
+		}
 	}
 }

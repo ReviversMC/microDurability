@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.util.math.MatrixStack;
 
-import com.github.reviversmc.microdurability.MicroDurability117;
+import com.github.reviversmc.microdurability.MicroDurability;
 
 @Mixin(InGameHud.class)
 public class InGameHudMixin117 {
@@ -24,7 +24,7 @@ public class InGameHudMixin117 {
 			method = "render"
 	)
 	private void renderArmorArea(MatrixStack matrices, float delta, CallbackInfo callbackInfo) {
-		MicroDurability117.renderer.renderArmorArea(matrices, ticks, delta);
+		MicroDurability.renderer.renderArmorArea(matrices, ticks, delta);
 	}
 
 	@Inject(
@@ -35,6 +35,6 @@ public class InGameHudMixin117 {
 			method = "render"
 	)
 	private void renderHeldItemExclamationMark(MatrixStack matrices, float delta, CallbackInfo callbackInfo) {
-		MicroDurability117.renderer.renderHeldItemLowDurabilityWarning(matrices, ticks, delta);
+		MicroDurability.renderer.renderHeldItemLowDurabilityWarning(matrices, ticks, delta);
 	}
 }

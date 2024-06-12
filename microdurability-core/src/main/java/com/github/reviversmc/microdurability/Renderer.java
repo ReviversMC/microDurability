@@ -3,22 +3,23 @@ package com.github.reviversmc.microdurability;
 import net.fabricmc.loader.api.FabricLoader;
 
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.Tessellator;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 import com.github.reviversmc.microdurability.integration.DoubleHotbarCompat;
 import com.github.reviversmc.microdurability.integration.RaisedCompat;
 
-public abstract class RendererBase {
+public abstract class Renderer {
 	private static final Identifier microdurabilityTexture = new Identifier("microdurability", "textures/gui/icons.png");
 	private static final boolean doubleHotbarLoaded = FabricLoader.getInstance().isModLoaded("double_hotbar");
 	private static boolean raisedLoaded = FabricLoader.getInstance().isModLoaded("raised");
 	private final MinecraftClient mc;
 
-	protected RendererBase() {
+	protected Renderer() {
 		mc = MinecraftClient.getInstance();
 
 		if (!raisedLoaded) {
@@ -51,6 +52,22 @@ public abstract class RendererBase {
 				> (MicroDurability.config.lowDurabilityWarning.blinkTime * 20f);
 	}
 
+	public static boolean shouldWarn(ItemStack stack) {
+		if (stack == null || !stack.isDamageable()) {
+			return false;
+		}
+
+		if (MicroDurability.config.lowDurabilityWarning.onlyOnMendingItems && EnchantmentHelper.getLevel(Enchantments.MENDING, stack) <= 0) {
+			return false;
+		}
+
+		int durability = stack.getMaxDamage() - stack.getDamage();
+		boolean damageAbsoluteValueEnough = durability < MicroDurability.config.lowDurabilityWarning.minDurabilityPointsBeforeWarning;
+		boolean damagePercentageEnough = (durability * 100f / stack.getMaxDamage()) < MicroDurability.config.lowDurabilityWarning.minDurabilityPercentageBeforeWarning;
+
+		return damageAbsoluteValueEnough && damagePercentageEnough;
+	}
+
 	public void renderHeldItemLowDurabilityWarning(Object context, int tick, float delta) {
 		if (!MicroDurability.config.lowDurabilityWarning.displayWarningForTools
 				|| mc.options.hudHidden
@@ -61,8 +78,8 @@ public abstract class RendererBase {
 		int scaledWidth = mc.getWindow().getScaledWidth();
 		int scaledHeight = mc.getWindow().getScaledHeight();
 
-		for (ItemStack item : getHandItems(mc.player)) {
-			if (!MicroDurability.shouldWarn(item)) {
+		for (ItemStack item : mc.player.getHandItems()) {
+			if (!shouldWarn(item)) {
 				continue;
 			}
 
@@ -98,7 +115,7 @@ public abstract class RendererBase {
 
 	public boolean renderArmorLowDurabilityWarning(Object context, int x, int y) {
 		for (ItemStack armorPiece : mc.player.getArmorItems()) {
-			if (!MicroDurability.shouldWarn(armorPiece)) {
+			if (!shouldWarn(armorPiece)) {
 				continue;
 			}
 
@@ -155,6 +172,5 @@ public abstract class RendererBase {
 	protected abstract void enableRenderSystems();
 	protected abstract void disableRenderSystems();
 	protected abstract void drawWarningTexture(Identifier texture, Object context, int x, int y, int u, int v, int width, int height);
-	protected abstract Iterable<ItemStack> getHandItems(ClientPlayerEntity e);
 	protected abstract void renderGuiQuad(BufferBuilder buffer, int x, int y, int width, int height, int red, int green, int blue, int alpha);
 }

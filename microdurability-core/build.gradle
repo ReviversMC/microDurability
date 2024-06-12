@@ -4,7 +4,10 @@ base {
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version_1_17}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings_1_17}:v2"
+	mappings loom.layered {
+		it.mappings "net.fabricmc:yarn:${project.yarn_mappings_1_17}:v2"
+		it.mappings file("./mappings.tiny")
+	}
 
 	// Other mods
 	modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version_1_17}"
