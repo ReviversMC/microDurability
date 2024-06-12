@@ -25,6 +25,10 @@ dependencies {
 		modRuntimeOnly "maven.modrinth:ferrite-core:${project.ferritecore_version_1_17}"
 		modRuntimeOnly "maven.modrinth:smoothboot-fabric:${project.smoothboot_version_1_17}"
 		modRuntimeOnly "curse.maven:no-fade-452768:${project.no_fade_version_1_17}"
+
+		// Comment out the following dependencies to check vanilla compatibility
+		modRuntimeOnly "maven.modrinth:raised:${project.raised_version_1_17}"
+		modRuntimeOnly "maven.modrinth:double-hotbar:${project.double_hotbar_version_1_17}"
 	}
 }
 

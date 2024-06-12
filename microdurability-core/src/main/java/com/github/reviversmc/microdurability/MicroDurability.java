@@ -3,12 +3,15 @@ package com.github.reviversmc.microdurability;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 
 public class MicroDurability implements ModInitializer {
+	public static final Logger LOGGER = LoggerFactory.getLogger("MicroDurability");
 	public static ModConfig config;
 
 	@Override
@@ -22,8 +25,7 @@ public class MicroDurability implements ModInitializer {
 			return false;
 		}
 
-		if (config.lowDurabilityWarning.onlyOnMendingItems
-				&& EnchantmentHelper.getLevel(Enchantments.MENDING, stack) <= 0) {
+		if (config.lowDurabilityWarning.onlyOnMendingItems && EnchantmentHelper.getLevel(Enchantments.MENDING, stack) <= 0) {
 			return false;
 		}
 

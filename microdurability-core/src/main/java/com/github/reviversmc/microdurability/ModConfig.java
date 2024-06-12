@@ -15,6 +15,9 @@ public class ModConfig implements ConfigData {
 		public boolean displayArmorBars = true;
 		public boolean displayBarsForUndamagedArmor = true;
 
+		@ConfigEntry.BoundedDiscrete(min = -30, max = 50)
+		public int yOffset = 0;
+
 		@Comment("If an armor piece is undamaged, its bar will have the defined custom color.")
 		@ConfigEntry.Gui.Tooltip
 		public boolean useCustomBarColorForUndamagedArmor = false;

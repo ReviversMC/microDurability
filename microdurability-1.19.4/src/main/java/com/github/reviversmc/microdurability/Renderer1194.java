@@ -2,13 +2,16 @@ package com.github.reviversmc.microdurability;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
+import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.BufferRenderer;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.VertexFormats;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Identifier;
 
 public class Renderer1194 extends RendererBase {
 	@Override
@@ -21,6 +24,13 @@ public class Renderer1194 extends RendererBase {
 	protected void enableRenderSystems() {
 		RenderSystem.enableBlend();
 		RenderSystem.enableDepthTest();
+	}
+
+	@Override
+	protected void drawWarningTexture(Identifier texture, Object context, int x, int y, int u, int v, int width, int height) {
+		RenderSystem.setShaderTexture(0, texture);
+		DrawableHelper.drawTexture((MatrixStack) context, x, y, u, v, width, height);
+		RenderSystem.setShaderTexture(0, DrawableHelper.GUI_ICONS_TEXTURE);
 	}
 
 	@Override

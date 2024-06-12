@@ -25,6 +25,10 @@ dependencies {
 		modRuntimeOnly "maven.modrinth:ferrite-core:${project.ferritecore_version_1_19}"
 		modRuntimeOnly "curse.maven:smooth-boot-415758:${project.smoothboot_version_1_19}"
 		modRuntimeOnly "curse.maven:no-fade-452768:${project.no_fade_version_1_19}"
+
+		// Comment out the following dependencies to check vanilla compatibility
+		modRuntimeOnly "maven.modrinth:raised:${project.raised_version_1_19}"
+		// modRuntimeOnly "curse.maven:double-hotbar-554026:${project.double_hotbar_version_1_19}" // 404s because 3rd-party-sharing is disabled
 	}
 }
 

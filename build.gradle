@@ -55,14 +55,14 @@ subprojects {
 	}
 
 	repositories {
-		if (project.use_third_party_mods == 'true') {
-			maven {
-				name = 'Modrinth'
-				url = 'https://api.modrinth.com/maven'
-				content {
-					includeGroup 'maven.modrinth'
-				}
+		maven {
+			name = 'Modrinth'
+			url = 'https://api.modrinth.com/maven'
+			content {
+				includeGroup 'maven.modrinth'
 			}
+		}
+		if (project.use_third_party_mods == 'true') {
 			maven {
 				url = 'https://cursemaven.com'
 				content {
@@ -131,5 +131,9 @@ subprojects {
 				from rootProject.file('assets/icon.png')
 			}
 		}
+	}
+
+	build.doFirst {
+		use_third_party_mods = 'false'
 	}
 }
