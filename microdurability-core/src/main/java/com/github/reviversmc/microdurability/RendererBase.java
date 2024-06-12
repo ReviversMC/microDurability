@@ -52,7 +52,9 @@ public abstract class RendererBase {
 	}
 
 	public void renderHeldItemLowDurabilityWarning(Object context, int tick, float delta) {
-		if (!MicroDurability.config.lowDurabilityWarning.displayWarningForTools || !isTimeToShowWarning(tick)) {
+		if (!MicroDurability.config.lowDurabilityWarning.displayWarningForTools
+				|| mc.options.hudHidden
+				|| !isTimeToShowWarning(tick)) {
 			return;
 		}
 
@@ -74,6 +76,10 @@ public abstract class RendererBase {
 	}
 
 	public void renderArmorArea(Object context, int tick, float delta) {
+		if (mc.options.hudHidden) {
+			return;
+		}
+
 		int scaledWidth = mc.getWindow().getScaledWidth();
 		int scaledHeight = mc.getWindow().getScaledHeight();
 
