@@ -90,6 +90,7 @@ allprojects {
 				&& project.name != 'microdurability-core'
 				&& project.name != 'microdurability-dev-env-extras') {
 			runtimeOnly project(path: ':microdurability-dev-env-extras', configuration: 'namedElements')
+			modRuntimeOnly "com.github.Chocohead:Fabric-ASM:${project.fabric_asm_version}"
 		}
 	}
 

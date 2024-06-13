@@ -11,7 +11,7 @@ dependencies {
 		it.mappings rootProject.file('mapping-overrides/1.17.tiny')
 	}
 
-	modApi "com.github.Chocohead:Fabric-ASM:${project.fabric_asm_version}"
+	modImplementation "com.github.Chocohead:Fabric-ASM:${project.fabric_asm_version}"
 }
 
 java {

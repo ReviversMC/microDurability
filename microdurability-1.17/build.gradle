@@ -12,7 +12,8 @@ dependencies {
 	}
 
 	// Other mods
-	modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version_1_17}") {
+	modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version_1_17}"
+	modRuntimeOnly("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version_1_17}") {
 		exclude(group: 'net.fabricmc.fabric-api')
 	}
 
@@ -21,7 +22,6 @@ dependencies {
 		// Use full Fabric API bundle while debugging, since transitive deps aren't always declared correctly
 		modRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version_1_17}"
 
-		modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version_1_17}"
 		modRuntimeOnly "maven.modrinth:lazydfu:${project.lazydfu_version_1_17}"
 		modRuntimeOnly "maven.modrinth:sodium:${project.sodium_version_1_17}"
 		runtimeOnly "org.joml:joml:${project.sodium_joml_version_1_17}"
