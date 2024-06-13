@@ -16,25 +16,13 @@ public class InGameHudMixin120 {
 	@Shadow
 	private int ticks;
 
-	@Inject(
-			at = @At(
-					value = "INVOKE",
-					target = "Lnet/minecraft/client/gui/hud/InGameHud;renderStatusBars(Lnet/minecraft/client/gui/DrawContext;)V"
-			),
-			method = "render"
-	)
-	private void renderArmorArea(DrawContext context, float delta, CallbackInfo callbackInfo) {
-		MicroDurability.renderer.renderArmorArea(context, ticks, delta);
+	@Inject(method = "renderHotbar", at = @At("HEAD"))
+	private void renderArmorArea(float delta, DrawContext context, CallbackInfo callbackInfo) {
+		MicroDurability.renderer.renderArmorArea(context, ticks);
 	}
 
-	@Inject(
-			at = @At(
-					value = "INVOKE",
-					target = "Lnet/minecraft/client/gui/hud/InGameHud;renderCrosshair(Lnet/minecraft/client/gui/DrawContext;)V"
-			),
-			method = "render"
-	)
-	private void renderHeldItemExclamationMark(DrawContext context, float delta, CallbackInfo callbackInfo) {
-		MicroDurability.renderer.renderHeldItemLowDurabilityWarning(context, ticks, delta);
+	@Inject(method = "renderCrosshair", at = @At("HEAD"))
+	private void renderHeldItemExclamationMark(DrawContext context, CallbackInfo callbackInfo) {
+		MicroDurability.renderer.renderHeldItemLowDurabilityWarning(context, ticks);
 	}
 }

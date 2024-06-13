@@ -6,23 +6,23 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
-import net.minecraft.client.util.math.MatrixStack;
 
 import com.github.reviversmc.microdurability.MicroDurability;
 
 @Mixin(InGameHud.class)
-public class InGameHudMixin117 {
+public class InGameHudMixin1205 {
 	@Shadow
 	private int ticks;
 
 	@Inject(method = "renderHotbar", at = @At("HEAD"))
-	private void renderArmorArea(float delta, MatrixStack matrices, CallbackInfo callbackInfo) {
-		MicroDurability.renderer.renderArmorArea(matrices, ticks);
+	private void renderArmorArea(DrawContext context, float delta, CallbackInfo callbackInfo) {
+		MicroDurability.renderer.renderArmorArea(context, ticks);
 	}
 
 	@Inject(method = "renderCrosshair", at = @At("HEAD"))
-	private void renderHeldItemExclamationMark(MatrixStack matrices, CallbackInfo callbackInfo) {
-		MicroDurability.renderer.renderHeldItemLowDurabilityWarning(matrices, ticks);
+	private void renderHeldItemExclamationMark(DrawContext context, float delta, CallbackInfo callbackInfo) {
+		MicroDurability.renderer.renderHeldItemLowDurabilityWarning(context, ticks);
 	}
 }

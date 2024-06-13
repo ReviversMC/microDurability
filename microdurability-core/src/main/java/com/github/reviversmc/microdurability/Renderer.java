@@ -68,7 +68,7 @@ public abstract class Renderer {
 		return damageAbsoluteValueEnough && damagePercentageEnough;
 	}
 
-	public void renderHeldItemLowDurabilityWarning(Object context, int tick, float delta) {
+	public void renderHeldItemLowDurabilityWarning(Object context, int tick) {
 		if (!MicroDurability.config.lowDurabilityWarning.displayWarningForTools
 				|| mc.options.hudHidden
 				|| !isTimeToShowWarning(tick)) {
@@ -92,7 +92,7 @@ public abstract class Renderer {
 		}
 	}
 
-	public void renderArmorArea(Object context, int tick, float delta) {
+	public void renderArmorArea(Object context, int tick) {
 		if (mc.options.hudHidden) {
 			return;
 		}
@@ -101,7 +101,7 @@ public abstract class Renderer {
 		int scaledHeight = mc.getWindow().getScaledHeight();
 
 		int x = scaledWidth/2 - 7;
-		int y = scaledHeight - 30 - MicroDurability.config.armorBars.yOffset;
+		int y = scaledHeight - 30 - getDoubleHotbarOffset() - MicroDurability.config.armorBars.yOffset;
 		if (mc.player.experienceLevel > 0) y -= 6;
 
 		boolean renderedWarning = MicroDurability.config.lowDurabilityWarning.displayWarningForArmor
@@ -109,7 +109,7 @@ public abstract class Renderer {
 				&& renderArmorLowDurabilityWarning(context, x+5, y-12);
 
 		if (!renderedWarning && MicroDurability.config.armorBars.displayArmorBars) {
-			renderArmorBars(context, x, y - getRaisedOffset() - getDoubleHotbarOffset());
+			renderArmorBars(context, x, y - getRaisedOffset());
 		}
 	}
 
