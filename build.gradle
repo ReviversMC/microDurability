@@ -154,6 +154,7 @@ dependencies {
 	include api(project(path: ':microdurability-1.20', configuration: 'namedElements'))
 	include api(project(path: ':microdurability-1.20.5', configuration: 'namedElements'))
 
+	modRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version_1_20_5}"
 	modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version_1_20_5}"
 	modRuntimeOnly("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version_1_20_5}") {
 		exclude(group: 'net.fabricmc.fabric-api')
