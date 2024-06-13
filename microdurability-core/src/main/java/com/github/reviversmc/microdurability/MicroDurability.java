@@ -1,11 +1,11 @@
 package com.github.reviversmc.microdurability;
 
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.github.reviversmc.microdurability.integration.ClothConfigCompat;
 import com.github.reviversmc.microdurability.mccompat.McVersionCompatInvoker;
 
 public class MicroDurability implements ModInitializer {
@@ -17,7 +17,10 @@ public class MicroDurability implements ModInitializer {
 	public void onInitialize() {
 		McVersionCompatInvoker.run();
 
-		AutoConfig.register(ModConfig.class, JanksonConfigSerializer::new);
-		config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+		if (FabricLoader.getInstance().isModLoaded("cloth-config2")) {
+			config = ClothConfigCompat.loadConfig();
+		} else {
+			config = new ModConfig();
+		}
 	}
 }

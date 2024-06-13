@@ -77,11 +77,20 @@ allprojects {
 		maven {
 			url = 'https://maven.shedaniel.me/'
 		}
+		maven {
+			url 'https://jitpack.io/'
+		}
 		mavenCentral()
 	}
 
 	dependencies {
 		modImplementation "net.fabricmc:fabric-loader:${project.fabric_loader_version}"
+
+		if (project.name != 'microdurability'
+				&& project.name != 'microdurability-core'
+				&& project.name != 'microdurability-dev-env-extras') {
+			runtimeOnly project(path: ':microdurability-dev-env-extras', configuration: 'namedElements')
+		}
 	}
 
 	loom {

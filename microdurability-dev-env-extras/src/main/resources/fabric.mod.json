@@ -1,22 +1,18 @@
 {
 	"schemaVersion": 1,
-	"id": "microdurability-core",
+	"id": "microdurability-dev-env-extras",
 	"version": "${version}",
-	"name": "microDurability Core",
-	"description": "Cross Minecraft version compatible components of microDurability",
+	"name": "microDurability Dev-Env Extras",
 	"license": "CC-BY-NC-SA-4.0",
 	"environment": "client",
 	"entrypoints": {
-		"main": [
-			"com.github.reviversmc.microdurability.MicroDurability"
+		"mm:early_risers": [
+			"com.github.reviversmc.microdurability.integration.ClothConfigCompatTransformer"
 		]
 	},
 	"depends": {
 		"fabricloader": ">=0.12.9",
-		"minecraft": ">=1.17"
-	},
-	"recommends": {
-		"cloth-config2": "*"
+		"mm": ">=2.3"
 	},
 	"custom": {
 		"modmenu": {

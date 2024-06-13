@@ -1,19 +1,17 @@
 base {
-	archivesBaseName += '-core'
+	archivesBaseName += '-dev-env-extras'
 }
 
 dependencies {
+	implementation project(path: ':microdurability-core', configuration: 'namedElements')
+
 	minecraft "com.mojang:minecraft:${project.minecraft_version_1_17}"
 	mappings loom.layered {
 		it.mappings "net.fabricmc:yarn:${project.yarn_mappings_1_17}:v2"
 		it.mappings rootProject.file('mapping-overrides/1.17.tiny')
 	}
 
-	// Other mods
-	modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version_1_17}"
-	modCompileOnly("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version_1_17}") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
+	modApi "com.github.Chocohead:Fabric-ASM:${project.fabric_asm_version}"
 }
 
 java {
