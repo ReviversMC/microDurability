@@ -6,7 +6,10 @@ dependencies {
 	api project(path: ':microdurability-core', configuration: 'namedElements')
 
 	minecraft "com.mojang:minecraft:${project.minecraft_version_1_17}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings_1_17}:v2"
+	mappings loom.layered {
+		it.mappings "net.fabricmc:yarn:${project.yarn_mappings_1_17}:v2"
+		it.mappings rootProject.file('mapping-overrides/1.17.tiny')
+	}
 
 	// Other mods
 	modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version_1_17}") {

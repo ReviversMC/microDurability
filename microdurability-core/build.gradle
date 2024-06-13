@@ -6,7 +6,7 @@ dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version_1_17}"
 	mappings loom.layered {
 		it.mappings "net.fabricmc:yarn:${project.yarn_mappings_1_17}:v2"
-		it.mappings file("./mappings.tiny")
+		it.mappings rootProject.file('mapping-overrides/1.17.tiny')
 	}
 
 	// Other mods
