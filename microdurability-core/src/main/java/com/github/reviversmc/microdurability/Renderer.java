@@ -63,6 +63,7 @@ public abstract class Renderer {
 	public void renderHeldItemLowDurabilityWarning(Object context, int tick) {
 		if (!MicroDurability.config.lowDurabilityWarning.displayWarningForTools
 				|| mc.options.hudHidden
+				|| mc.player.isCreative()
 				|| !isTimeToShowWarning(tick)) {
 			return;
 		}
@@ -85,7 +86,7 @@ public abstract class Renderer {
 	}
 
 	public void renderArmorArea(Object context, int tick) {
-		if (mc.options.hudHidden) {
+		if (mc.options.hudHidden || mc.player.isCreative()) {
 			return;
 		}
 
