@@ -1,4 +1,4 @@
-package com.github.reviversmc.microdurability.mccompat;
+package com.github.reviversmc.microdurability.compat.minecraft;
 
 import java.util.List;
 

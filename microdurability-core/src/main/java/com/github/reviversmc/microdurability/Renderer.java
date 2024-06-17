@@ -6,8 +6,8 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-import com.github.reviversmc.microdurability.integration.DoubleHotbarCompat;
-import com.github.reviversmc.microdurability.integration.RaisedCompat;
+import com.github.reviversmc.microdurability.compat.mods.DoubleHotbarCompat;
+import com.github.reviversmc.microdurability.compat.mods.RaisedCompat;
 
 public abstract class Renderer {
 	private static final Identifier microdurabilityTexture = Identifier.tryParse("microdurability:textures/gui/icons.png");

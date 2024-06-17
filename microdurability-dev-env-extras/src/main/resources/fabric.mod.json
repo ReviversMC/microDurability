@@ -7,7 +7,7 @@
 	"environment": "client",
 	"entrypoints": {
 		"mm:early_risers": [
-			"com.github.reviversmc.microdurability.integration.ClothConfigCompatTransformer"
+			"com.github.reviversmc.microdurability.compat.mods.ClothConfigCompatTransformer"
 		]
 	},
 	"depends": {

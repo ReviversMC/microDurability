@@ -1,4 +1,4 @@
-package com.github.reviversmc.microdurability.integration;
+package com.github.reviversmc.microdurability.compat.mods;
 
 import java.lang.reflect.Field;
 import java.util.LinkedHashMap;

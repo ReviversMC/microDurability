@@ -5,8 +5,8 @@ import net.fabricmc.loader.api.FabricLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.reviversmc.microdurability.integration.ClothConfigCompat;
-import com.github.reviversmc.microdurability.mccompat.McVersionCompatInvoker;
+import com.github.reviversmc.microdurability.compat.minecraft.McVersionCompatInvoker;
+import com.github.reviversmc.microdurability.compat.mods.ClothConfigCompat;
 
 public class MicroDurability implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("MicroDurability");

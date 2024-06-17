@@ -1,4 +1,4 @@
-package com.github.reviversmc.microdurability.integration;
+package com.github.reviversmc.microdurability.compat.mods;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;

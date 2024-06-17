@@ -10,7 +10,7 @@
 			"com.github.reviversmc.microdurability.MicroDurability1205"
 		],
 		"modmenu": [
-			"com.github.reviversmc.microdurability.integration.ModMenuIntegration"
+			"com.github.reviversmc.microdurability.compat.mods.ModMenuIntegration"
 		]
 	},
 	"mixins": [

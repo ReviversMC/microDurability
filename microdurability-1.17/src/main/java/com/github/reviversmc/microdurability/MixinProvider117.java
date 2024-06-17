@@ -2,7 +2,7 @@ package com.github.reviversmc.microdurability;
 
 import java.util.List;
 
-import com.github.reviversmc.microdurability.mccompat.McVersionMixinProvider;
+import com.github.reviversmc.microdurability.compat.minecraft.McVersionMixinProvider;
 
 public class MixinProvider117 extends McVersionMixinProvider {
 	@Override

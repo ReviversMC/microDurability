@@ -21,7 +21,7 @@
 	"environment": "client",
 	"entrypoints": {
 		"modmenu": [
-			"com.github.reviversmc.microdurability.integration.ModMenuIntegration"
+			"com.github.reviversmc.microdurability.compat.mods.ModMenuIntegration"
 		]
 	},
 	"depends": {

@@ -1,4 +1,4 @@
-package com.github.reviversmc.microdurability.integration;
+package com.github.reviversmc.microdurability.compat.mods;
 
 import net.fabricmc.loader.api.FabricLoader;
 

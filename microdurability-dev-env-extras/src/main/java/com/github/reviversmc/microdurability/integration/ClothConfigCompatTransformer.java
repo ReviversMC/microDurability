@@ -1,4 +1,4 @@
-package com.github.reviversmc.microdurability.integration;
+package com.github.reviversmc.microdurability.compat.mods;
 
 import com.chocohead.mm.api.ClassTinkerers;
 import net.fabricmc.loader.api.FabricLoader;

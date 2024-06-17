@@ -1,4 +1,4 @@
-package com.github.reviversmc.microdurability.integration;
+package com.github.reviversmc.microdurability.compat.mods;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;

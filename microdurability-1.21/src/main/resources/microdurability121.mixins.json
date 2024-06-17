@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "com.github.reviversmc.microdurability.mixin",
+	"package": "com.github.reviversmc.microdurability.mixins",
 	"compatibilityLevel": "JAVA_21",
 	"plugin": "com.github.reviversmc.microdurability.MixinProvider121",
 	"injectors": {

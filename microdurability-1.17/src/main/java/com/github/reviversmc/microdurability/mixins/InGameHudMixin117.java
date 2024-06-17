@@ -1,4 +1,4 @@
-package com.github.reviversmc.microdurability.mixin;
+package com.github.reviversmc.microdurability.mixins;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
