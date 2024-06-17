@@ -8,21 +8,22 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
+import net.minecraft.client.render.RenderTickCounter;
 
 import com.github.reviversmc.microdurability.MicroDurability;
 
 @Mixin(InGameHud.class)
-public class InGameHudMixin120 {
+public class InGameHudMixin121 {
 	@Shadow
 	private int ticks;
 
 	@Inject(method = "renderHotbar", at = @At("RETURN"))
-	private void renderArmorArea(float delta, DrawContext context, CallbackInfo callbackInfo) {
+	private void renderArmorArea(DrawContext context, RenderTickCounter tickCounter, CallbackInfo callbackInfo) {
 		MicroDurability.renderer.renderArmorArea(context, ticks);
 	}
 
 	@Inject(method = "renderCrosshair", at = @At("RETURN"))
-	private void renderHeldItemExclamationMark(DrawContext context, CallbackInfo callbackInfo) {
+	private void renderHeldItemExclamationMark(DrawContext context, RenderTickCounter tickCounter, CallbackInfo callbackInfo) {
 		MicroDurability.renderer.renderHeldItemLowDurabilityWarning(context, ticks);
 	}
 }

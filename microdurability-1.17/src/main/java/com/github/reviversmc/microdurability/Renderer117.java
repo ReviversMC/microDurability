@@ -2,15 +2,24 @@ package com.github.reviversmc.microdurability;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.BufferRenderer;
 import net.minecraft.client.render.GameRenderer;
+import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.VertexFormats;
+import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
+/**
+ * See {@link ItemRenderer#renderGuiItemOverlay(TextRenderer, ItemStack, int, int, String)}.
+ */
 public class Renderer117 extends Renderer {
 	// Of type Object to prevent crashes on later MC versions where DrawableHelper doesn't exist
 	private Object drawableHelper;
@@ -20,17 +29,8 @@ public class Renderer117 extends Renderer {
 	}
 
 	@Override
-	protected void disableRenderSystems() {
-		RenderSystem.disableDepthTest();
-		RenderSystem.disableTexture();
-		RenderSystem.disableBlend();
-	}
-
-	@Override
-	protected void enableRenderSystems() {
-		RenderSystem.enableBlend();
-		RenderSystem.enableTexture();
-		RenderSystem.enableDepthTest();
+	protected boolean hasMending(ItemStack stack) {
+		return EnchantmentHelper.getLevel(Enchantments.MENDING, stack) > 0;
 	}
 
 	@Override
@@ -41,8 +41,26 @@ public class Renderer117 extends Renderer {
 	}
 
 	@Override
+	protected void preRenderGuiQuads() {
+		RenderSystem.disableDepthTest();
+		RenderSystem.disableTexture();
+		RenderSystem.disableBlend();
+	}
+
+	@Override
+	protected void postRenderGuiQuads() {
+		RenderSystem.enableBlend();
+		RenderSystem.enableTexture();
+		RenderSystem.enableDepthTest();
+	}
+
+	@Override
 	@SuppressWarnings("checkstyle:SingleSpaceSeparator")
-	protected void renderGuiQuad(BufferBuilder buffer, int x, int y, int width, int height, int red, int green, int blue, int alpha) {
+	protected void renderGuiQuad(Object context, int x, int y, int width, int height, int red, int green, int blue, int alpha) {
+		y -= getRaisedOffset();
+		height -= getRaisedOffset();
+
+		BufferBuilder buffer = Tessellator.getInstance().getBuffer();
 		RenderSystem.setShader(GameRenderer::getPositionColorShader);
 		buffer.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
 		buffer.vertex(x,         y,          0.0D).color(red, green, blue, alpha).next();

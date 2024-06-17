@@ -16,12 +16,12 @@ public class InGameHudMixin1205 {
 	@Shadow
 	private int ticks;
 
-	@Inject(method = "renderHotbar", at = @At("HEAD"))
+	@Inject(method = "renderHotbar", at = @At("RETURN"))
 	private void renderArmorArea(DrawContext context, float delta, CallbackInfo callbackInfo) {
 		MicroDurability.renderer.renderArmorArea(context, ticks);
 	}
 
-	@Inject(method = "renderCrosshair", at = @At("HEAD"))
+	@Inject(method = "renderCrosshair", at = @At("RETURN"))
 	private void renderHeldItemExclamationMark(DrawContext context, float delta, CallbackInfo callbackInfo) {
 		MicroDurability.renderer.renderHeldItemLowDurabilityWarning(context, ticks);
 	}

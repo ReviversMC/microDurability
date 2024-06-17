@@ -2,15 +2,17 @@ package com.github.reviversmc.microdurability;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.client.render.BufferBuilder;
-import net.minecraft.client.render.BufferRenderer;
-import net.minecraft.client.render.GameRenderer;
-import net.minecraft.client.render.VertexFormat;
-import net.minecraft.client.render.VertexFormats;
+import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.ColorHelper;
 
+/**
+ * See {@link ItemRenderer#renderGuiItemOverlay(MatrixStack, TextRenderer, ItemStack, int, int, String)}.
+ */
 public class Renderer1194 extends Renderer119 {
 	@Override
 	protected void drawWarningTexture(Identifier texture, Object context, int x, int y, int u, int v, int width, int height) {
@@ -20,14 +22,20 @@ public class Renderer1194 extends Renderer119 {
 	}
 
 	@Override
+	protected void preRenderGuiQuads() {
+		RenderSystem.disableDepthTest();
+		RenderSystem.disableBlend();
+	}
+
+	@Override
+	protected void postRenderGuiQuads() {
+		RenderSystem.enableBlend();
+		RenderSystem.enableDepthTest();
+	}
+
+	@Override
 	@SuppressWarnings("checkstyle:SingleSpaceSeparator")
-	protected void renderGuiQuad(BufferBuilder buffer, int x, int y, int width, int height, int red, int green, int blue, int alpha) {
-		RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-		buffer.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
-		buffer.vertex(x,         y,          0.0D).color(red, green, blue, alpha).next();
-		buffer.vertex(x,         y + height, 0.0D).color(red, green, blue, alpha).next();
-		buffer.vertex(x + width, y + height, 0.0D).color(red, green, blue, alpha).next();
-		buffer.vertex(x + width, y,          0.0D).color(red, green, blue, alpha).next();
-		BufferRenderer.drawWithGlobalProgram(buffer.end());
+	protected void renderGuiQuad(Object context, int x, int y, int width, int height, int red, int green, int blue, int alpha) {
+		DrawableHelper.fill((MatrixStack) context, x, y, x + width, y + height, ColorHelper.Argb.getArgb(alpha, red, green, blue));
 	}
 }

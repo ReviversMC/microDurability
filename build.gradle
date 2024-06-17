@@ -153,6 +153,7 @@ dependencies {
 	include api(project(path: ':microdurability-1.19.4', configuration: 'namedElements'))
 	include api(project(path: ':microdurability-1.20', configuration: 'namedElements'))
 	include api(project(path: ':microdurability-1.20.5', configuration: 'namedElements'))
+	include api(project(path: ':microdurability-1.21', configuration: 'namedElements'))
 
 	modRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version_1_20_5}"
 	modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version_1_20_5}"

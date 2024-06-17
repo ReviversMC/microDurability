@@ -3,10 +3,6 @@ package com.github.reviversmc.microdurability;
 import net.fabricmc.loader.api.FabricLoader;
 
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.BufferBuilder;
-import net.minecraft.client.render.Tessellator;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
@@ -14,20 +10,16 @@ import com.github.reviversmc.microdurability.integration.DoubleHotbarCompat;
 import com.github.reviversmc.microdurability.integration.RaisedCompat;
 
 public abstract class Renderer {
-	private static final Identifier microdurabilityTexture = new Identifier("microdurability", "textures/gui/icons.png");
+	private static final Identifier microdurabilityTexture = Identifier.tryParse("microdurability:textures/gui/icons.png");
 	private static final boolean doubleHotbarLoaded = FabricLoader.getInstance().isModLoaded("double_hotbar");
-	private static boolean raisedLoaded = FabricLoader.getInstance().isModLoaded("raised");
+	private static final boolean raisedLoaded = FabricLoader.getInstance().isModLoaded("raised");
 	private final MinecraftClient mc;
 
 	protected Renderer() {
 		mc = MinecraftClient.getInstance();
-
-		if (!raisedLoaded) {
-			return;
-		}
 	}
 
-	private int getRaisedOffset() {
+	protected final int getRaisedOffset() {
 		if (!raisedLoaded) {
 			return 0;
 		}
@@ -52,12 +44,12 @@ public abstract class Renderer {
 				> (MicroDurability.config.lowDurabilityWarning.blinkTime * 20f);
 	}
 
-	public static boolean shouldWarn(ItemStack stack) {
+	public boolean shouldWarn(ItemStack stack) {
 		if (stack == null || !stack.isDamageable()) {
 			return false;
 		}
 
-		if (MicroDurability.config.lowDurabilityWarning.onlyOnMendingItems && EnchantmentHelper.getLevel(Enchantments.MENDING, stack) <= 0) {
+		if (MicroDurability.config.lowDurabilityWarning.onlyOnMendingItems && !hasMending(stack)) {
 			return false;
 		}
 
@@ -109,7 +101,7 @@ public abstract class Renderer {
 				&& renderArmorLowDurabilityWarning(context, x+5, y-12);
 
 		if (!renderedWarning && MicroDurability.config.armorBars.displayArmorBars) {
-			renderArmorBars(context, x, y - getRaisedOffset());
+			renderArmorBars(context, x, y);
 		}
 	}
 
@@ -128,7 +120,7 @@ public abstract class Renderer {
 
 	private void renderArmorBars(Object context, int x, int y) {
 		for (ItemStack armorPiece : mc.player.getArmorItems()) {
-			renderBar(armorPiece, x, y -= 3);
+			renderBar(context, armorPiece, x, y -= 3);
 		}
 	}
 
@@ -136,16 +128,14 @@ public abstract class Renderer {
 		drawWarningTexture(microdurabilityTexture, context, x, y, 0, 0, 3, 11);
 	}
 
-	private void renderBar(ItemStack stack, int x, int y) {
+	private void renderBar(Object context, ItemStack stack, int x, int y) {
 		if (stack == null || stack.isEmpty()) return;
 		if (!MicroDurability.config.armorBars.displayBarsForUndamagedArmor && !stack.isItemBarVisible()) return;
 		if (!stack.isDamageable()) return;
 
-		disableRenderSystems();
-		Tessellator tessellator = Tessellator.getInstance();
-		BufferBuilder bufferBuilder = tessellator.getBuffer();
+		preRenderGuiQuads();
 		int width = stack.getItemBarStep();
-		this.renderGuiQuad(bufferBuilder, x, y, 13, 2, 0, 0, 0, 255);
+		this.renderGuiQuad(context, x, y, 13, 2, 0, 0, 0, 255);
 		int red;
 		int green;
 		int blue;
@@ -165,12 +155,13 @@ public abstract class Renderer {
 			alpha = 255;
 		}
 
-		this.renderGuiQuad(bufferBuilder, x, y, width, 1, red, green, blue, alpha);
-		enableRenderSystems();
+		this.renderGuiQuad(context, x, y, width, 1, red, green, blue, alpha);
+		postRenderGuiQuads();
 	}
 
-	protected abstract void enableRenderSystems();
-	protected abstract void disableRenderSystems();
+	protected abstract boolean hasMending(ItemStack stack);
 	protected abstract void drawWarningTexture(Identifier texture, Object context, int x, int y, int u, int v, int width, int height);
-	protected abstract void renderGuiQuad(BufferBuilder buffer, int x, int y, int width, int height, int red, int green, int blue, int alpha);
+	protected abstract void preRenderGuiQuads();
+	protected abstract void postRenderGuiQuads();
+	protected abstract void renderGuiQuad(Object context, int x, int y, int width, int height, int red, int green, int blue, int alpha);
 }
