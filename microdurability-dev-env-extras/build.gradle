@@ -5,20 +5,20 @@ base {
 dependencies {
 	implementation project(path: ':microdurability-core', configuration: 'namedElements')
 
-	minecraft "com.mojang:minecraft:${project.minecraft_version_1_17}"
+	minecraft "com.mojang:minecraft:${project.minecraft_version_1_16}"
 	mappings loom.layered {
-		it.mappings "net.fabricmc:yarn:${project.yarn_mappings_1_17}:v2"
-		it.mappings rootProject.file('mapping-overrides/1.17.tiny')
+		it.mappings "net.fabricmc:yarn:${project.yarn_mappings_1_16}:v2"
+		it.mappings rootProject.file('mapping-overrides/getHandItems.tiny')
 	}
 
 	modImplementation "com.github.Chocohead:Fabric-ASM:${project.fabric_asm_version}"
 }
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_16
-	targetCompatibility = JavaVersion.VERSION_16
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 16
+	it.options.release = 8
 }

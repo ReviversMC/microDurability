@@ -12,7 +12,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import com.github.reviversmc.microdurability.MicroDurability;
 
 @Mixin(InGameHud.class)
-public class InGameHudMixin117 {
+public class InGameHudMixin116 {
 	@Shadow
 	private int ticks;
 

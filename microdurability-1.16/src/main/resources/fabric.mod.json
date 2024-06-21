@@ -1,25 +1,25 @@
 {
 	"schemaVersion": 1,
-	"id": "microdurability-compat-1-17",
+	"id": "microdurability-compat-1-16",
 	"version": "${version}",
-	"name": "microDurability 1.17 Compat",
+	"name": "microDurability 1.16 Compat",
 	"license": "MPL-2.0",
 	"environment": "client",
 	"entrypoints": {
 		"microdurability": [
-			"com.github.reviversmc.microdurability.MicroDurability117"
+			"com.github.reviversmc.microdurability.MicroDurability116"
 		],
 		"modmenu": [
 			"com.github.reviversmc.microdurability.compat.mods.ModMenuIntegration"
 		]
 	},
 	"mixins": [
-		"microdurability117.mixins.json"
+		"microdurability116.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.12.9",
-		"minecraft": ">=1.17",
-		"microdurability-compat-1-16": "*"
+		"minecraft": ">=1.16",
+		"microdurability-core": "*"
 	},
 	"custom": {
 		"modmenu": {

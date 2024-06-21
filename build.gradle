@@ -148,6 +148,7 @@ allprojects {
 
 dependencies {
 	include api(project(path: ':microdurability-core', configuration: 'namedElements'))
+	include api(project(path: ':microdurability-1.16', configuration: 'namedElements'))
 	include api(project(path: ':microdurability-1.17', configuration: 'namedElements'))
 	include api(project(path: ':microdurability-1.19', configuration: 'namedElements'))
 	include api(project(path: ':microdurability-1.19.4', configuration: 'namedElements'))

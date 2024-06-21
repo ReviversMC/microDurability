@@ -8,7 +8,7 @@ public final class McVersionHelper {
 	public static final String INFINITY = "*";
 	public static final Version MC_VERSION = FabricLoader.getInstance()
 			.getModContainer("minecraft")
-			.orElseThrow()
+			.get()
 			.getMetadata()
 			.getVersion();
 

@@ -3,12 +3,12 @@ base {
 }
 
 dependencies {
-	api project(path: ':microdurability-core', configuration: 'namedElements')
+	api project(path: ':microdurability-1.16', configuration: 'namedElements')
 
 	minecraft "com.mojang:minecraft:${project.minecraft_version_1_17}"
 	mappings loom.layered {
 		it.mappings "net.fabricmc:yarn:${project.yarn_mappings_1_17}:v2"
-		it.mappings rootProject.file('mapping-overrides/1.17.tiny')
+		it.mappings rootProject.file('mapping-overrides/getHandItems.tiny')
 	}
 
 	// Other mods

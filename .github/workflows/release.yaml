@@ -37,12 +37,13 @@ jobs:
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           files: build/libs/!(*-@(dev|sources)).jar
-          name: 0.4.0 for MC 1.17+
-          version: 0.4.0+1.17-1.21
+          name: 0.4.0 for MC 1.16+
+          version: 0.4.0+1.16-1.21
           version-type: release
           loaders: |
             fabric
           game-versions: |
+            1.16.5
             1.17
             1.17.1
             1.18

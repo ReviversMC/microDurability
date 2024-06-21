@@ -1,25 +1,27 @@
 package com.github.reviversmc.microdurability;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.BufferRenderer;
-import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.Tessellator;
-import net.minecraft.client.render.VertexFormat;
 import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Matrix4f;
 
 /**
  * See {@link ItemRenderer#renderGuiItemOverlay(TextRenderer, ItemStack, int, int, String)}.
  */
-public class Renderer117 extends Renderer116 {
+public class Renderer116 extends Renderer {
 	// Of type Object to prevent crashes on later MC versions where DrawableHelper doesn't exist
 	private Object drawableHelper;
 
@@ -28,32 +30,48 @@ public class Renderer117 extends Renderer116 {
 	}
 
 	@Override
+	protected boolean hasMending(ItemStack stack) {
+		return EnchantmentHelper.getLevel(Enchantments.MENDING, stack) > 0;
+	}
+
+	@Override
 	protected void drawWarningTexture(Identifier texture, Object context, int x, int y, int u, int v, int width, int height) {
-		RenderSystem.setShaderTexture(0, texture);
+		mc.getTextureManager().bindTexture(texture);
 		((DrawableHelper) drawableHelper).drawTexture((MatrixStack) context, x, y, u, v, width, height);
-		RenderSystem.setShaderTexture(0, DrawableHelper.GUI_ICONS_TEXTURE);
+		mc.getTextureManager().bindTexture(DrawableHelper.GUI_ICONS_TEXTURE);
 	}
 
 	@Override
 	protected int getItemBarStep(ItemStack stack) {
-		return stack.getItemBarStep();
+		float damage = stack.getDamage();
+		float maxDamage = stack.getMaxDamage();
+
+		return Math.round(13F - damage * 13F / maxDamage);
 	}
 
 	@Override
 	protected int getItemBarColor(ItemStack stack) {
-		return stack.getItemBarColor();
+		float damage = stack.getDamage();
+		float maxDamage = stack.getMaxDamage();
+		float fraction = Math.max(0.0F, maxDamage - damage) / maxDamage;
+
+		return MathHelper.hsvToRgb(fraction / 3.0F, 1.0F, 1.0F);
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	protected void preRenderGuiQuads() {
 		RenderSystem.disableDepthTest();
 		RenderSystem.disableTexture();
+		RenderSystem.disableAlphaTest();
 		RenderSystem.disableBlend();
 	}
 
 	@Override
+	@SuppressWarnings("deprecation")
 	protected void postRenderGuiQuads() {
 		RenderSystem.enableBlend();
+		RenderSystem.enableAlphaTest();
 		RenderSystem.enableTexture();
 		RenderSystem.enableDepthTest();
 	}
@@ -67,8 +85,7 @@ public class Renderer117 extends Renderer116 {
 		y -= getRaisedOffset();
 
 		BufferBuilder buffer = Tessellator.getInstance().getBuffer();
-		RenderSystem.setShader(GameRenderer::getPositionColorShader);
-		buffer.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
+		buffer.begin(GL11.GL_QUADS, VertexFormats.POSITION_COLOR);
 		buffer.vertex(x,         y,          0.0D).color(red, green, blue, alpha).next();
 		buffer.vertex(x,         y + height, 0.0D).color(red, green, blue, alpha).next();
 		buffer.vertex(x + width, y + height, 0.0D).color(red, green, blue, alpha).next();

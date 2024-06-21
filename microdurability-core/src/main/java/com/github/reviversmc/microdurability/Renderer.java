@@ -13,7 +13,7 @@ public abstract class Renderer {
 	private static final Identifier microdurabilityTexture = Identifier.tryParse("microdurability:textures/gui/icons.png");
 	private static final boolean doubleHotbarLoaded = FabricLoader.getInstance().isModLoaded("double_hotbar");
 	private static final boolean raisedLoaded = FabricLoader.getInstance().isModLoaded("raised");
-	private final MinecraftClient mc;
+	protected final MinecraftClient mc;
 
 	protected Renderer() {
 		mc = MinecraftClient.getInstance();
@@ -131,11 +131,11 @@ public abstract class Renderer {
 
 	private void renderBar(Object context, ItemStack stack, int x, int y) {
 		if (stack == null || stack.isEmpty()) return;
-		if (!MicroDurability.config.armorBars.displayBarsForUndamagedArmor && !stack.isItemBarVisible()) return;
+		if (!MicroDurability.config.armorBars.displayBarsForUndamagedArmor && !stack.isDamaged()) return;
 		if (!stack.isDamageable()) return;
 
 		preRenderGuiQuads();
-		int width = stack.getItemBarStep();
+		int width = getItemBarStep(stack);
 		this.renderGuiQuad(context, x, y, 13, 2, 0, 0, 0, 255);
 		int red;
 		int green;
@@ -149,7 +149,7 @@ public abstract class Renderer {
 			blue = (argb & 0xFF) & 255;
 			alpha = ((argb >> 24) & 0xFF) & 255;
 		} else {
-			int color = stack.getItemBarColor();
+			int color = getItemBarColor(stack);
 			red = color >> 16 & 255;
 			green = color >> 8 & 255;
 			blue = color & 255;
@@ -162,6 +162,8 @@ public abstract class Renderer {
 
 	protected abstract boolean hasMending(ItemStack stack);
 	protected abstract void drawWarningTexture(Identifier texture, Object context, int x, int y, int u, int v, int width, int height);
+	protected abstract int getItemBarStep(ItemStack stack);
+	protected abstract int getItemBarColor(ItemStack stack);
 	protected abstract void preRenderGuiQuads();
 	protected abstract void postRenderGuiQuads();
 	protected abstract void renderGuiQuad(Object context, int x, int y, int width, int height, int red, int green, int blue, int alpha);

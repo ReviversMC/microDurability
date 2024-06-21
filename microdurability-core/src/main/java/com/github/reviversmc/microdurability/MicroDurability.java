@@ -2,14 +2,14 @@ package com.github.reviversmc.microdurability;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.github.reviversmc.microdurability.compat.minecraft.McVersionCompatInvoker;
 import com.github.reviversmc.microdurability.compat.mods.ClothConfigCompat;
 
 public class MicroDurability implements ModInitializer {
-	public static final Logger LOGGER = LoggerFactory.getLogger("MicroDurability");
+	public static final Logger LOGGER = LogManager.getLogger("MicroDurability");
 	public static ModConfig config;
 	public static Renderer renderer;
 

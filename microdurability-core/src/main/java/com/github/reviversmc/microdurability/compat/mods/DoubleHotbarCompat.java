@@ -23,7 +23,7 @@ public class DoubleHotbarCompat {
 	static {
 		installedVersion = FabricLoader.getInstance()
 				.getModContainer("double_hotbar")
-				.orElseThrow()
+				.get()
 				.getMetadata()
 				.getVersion();
 

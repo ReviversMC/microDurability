@@ -8,7 +8,7 @@ public class MixinProvider117 extends McVersionMixinProvider {
 	@Override
 	public List<String> getMixins() {
 		if (MicroDurability117.IS_COMPATIBLE.get()) {
-			return List.of("InGameHudMixin117");
+			return List.of("InGameHudMixin116");
 		}
 
 		return null;

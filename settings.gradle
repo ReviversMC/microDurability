@@ -16,6 +16,7 @@ pluginManagement {
 rootProject.name = 'microdurability'
 
 include 'microdurability-core'
+include 'microdurability-1.16'
 include 'microdurability-1.17'
 include 'microdurability-1.19'
 include 'microdurability-1.19.4'
