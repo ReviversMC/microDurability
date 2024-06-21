@@ -35,6 +35,10 @@ public abstract class Renderer {
 		return DoubleHotbarCompat.getHotbarHeight();
 	}
 
+	private boolean isStatusAreaVisible() {
+		return mc.interactionManager.hasStatusBars() && !mc.options.hudHidden;
+	}
+
 	private boolean isTimeToShowWarning(int tick) {
 		if (MicroDurability.config.lowDurabilityWarning.blinkTime < 0.001) {
 			return true;
@@ -62,8 +66,7 @@ public abstract class Renderer {
 
 	public void renderHeldItemLowDurabilityWarning(Object context, int tick) {
 		if (!MicroDurability.config.lowDurabilityWarning.displayWarningForTools
-				|| mc.options.hudHidden
-				|| mc.player.isCreative()
+				|| !isStatusAreaVisible()
 				|| !isTimeToShowWarning(tick)) {
 			return;
 		}
@@ -86,7 +89,7 @@ public abstract class Renderer {
 	}
 
 	public void renderArmorArea(Object context, int tick) {
-		if (mc.options.hudHidden || mc.player.isCreative()) {
+		if (!isStatusAreaVisible()) {
 			return;
 		}
 
