@@ -147,28 +147,37 @@ allprojects {
 
 
 dependencies {
-	include api(project(path: ':microdurability-core', configuration: 'namedElements'))
-	include api(project(path: ':microdurability-1.16', configuration: 'namedElements'))
-	include api(project(path: ':microdurability-1.17', configuration: 'namedElements'))
-	include api(project(path: ':microdurability-1.19', configuration: 'namedElements'))
-	include api(project(path: ':microdurability-1.19.4', configuration: 'namedElements'))
-	include api(project(path: ':microdurability-1.20', configuration: 'namedElements'))
-	include api(project(path: ':microdurability-1.20.5', configuration: 'namedElements'))
-	include api(project(path: ':microdurability-1.21', configuration: 'namedElements'))
+	include project(path: ':microdurability-core')
+	include project(path: ':microdurability-1.16')
+	include project(path: ':microdurability-1.17')
+	include project(path: ':microdurability-1.19')
+	include project(path: ':microdurability-1.19.4')
+	include project(path: ':microdurability-1.20')
+	include project(path: ':microdurability-1.20.5')
+	include project(path: ':microdurability-1.21')
 
-	modRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version_1_20_5}"
-	modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version_1_20_5}"
-	modRuntimeOnly("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version_1_20_5}") {
+	runtimeOnly project(path: ':microdurability-core', configuration: "namedElements")
+	runtimeOnly project(path: ':microdurability-1.16', configuration: "namedElements")
+	runtimeOnly project(path: ':microdurability-1.17', configuration: "namedElements")
+	runtimeOnly project(path: ':microdurability-1.19', configuration: "namedElements")
+	runtimeOnly project(path: ':microdurability-1.19.4', configuration: "namedElements")
+	runtimeOnly project(path: ':microdurability-1.20', configuration: "namedElements")
+	runtimeOnly project(path: ':microdurability-1.20.5', configuration: "namedElements")
+	runtimeOnly project(path: ':microdurability-1.21', configuration: "namedElements")
+
+	modRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version_1_21}"
+	modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version_1_21}"
+	modRuntimeOnly("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version_1_21}") {
 		exclude(group: 'net.fabricmc.fabric-api')
 	}
 
-	minecraft "com.mojang:minecraft:${minecraft_version_1_20_5}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings_1_20_5}:v2"
+	minecraft "com.mojang:minecraft:${minecraft_version_1_21}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings_1_21}:v2"
 }
 
 
 processResources {
 	from("${rootDir}/assets/icon.png") {
-		into "assets/microdurability/"
+		into 'assets/microdurability/'
 	}
 }
