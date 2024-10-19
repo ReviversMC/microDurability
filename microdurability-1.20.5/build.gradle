@@ -27,7 +27,7 @@ dependencies {
 
 		// Comment out the following dependencies to check vanilla compatibility
 		modRuntimeOnly "maven.modrinth:raised:${project.raised_version_1_20_5}"
-		// modRuntimeOnly "maven.modrinth:double-hotbar:${project.double_hotbar_version_1_20_5}"
+		modRuntimeOnly "maven.modrinth:double-hotbar:${project.double_hotbar_version_1_20_5}"
 	}
 }
 

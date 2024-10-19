@@ -30,7 +30,7 @@ dependencies {
 
 		// Comment out the following dependencies to check vanilla compatibility
 		modRuntimeOnly "maven.modrinth:raised:${project.raised_version_1_19}"
-		// modRuntimeOnly "curse.maven:double-hotbar-554026:${project.double_hotbar_version_1_19}" // 404s because 3rd-party-sharing is disabled
+		modRuntimeOnly "maven.modrinth:double-hotbar:${project.double_hotbar_version_1_19}"
 	}
 }
 

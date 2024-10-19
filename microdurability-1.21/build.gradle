@@ -22,12 +22,12 @@ dependencies {
 		modRuntimeOnly "maven.modrinth:sodium:${project.sodium_version_1_21}"
 		modRuntimeOnly "maven.modrinth:lithium:${project.lithium_version_1_21}"
 		modRuntimeOnly "maven.modrinth:ferrite-core:${project.ferritecore_version_1_21}"
-		// modRuntimeOnly "maven.modrinth:threadtweak:${project.threadtweak_version_1_21}"
+		modRuntimeOnly "maven.modrinth:threadtweak:${project.threadtweak_version_1_21}"
 		modRuntimeOnly "maven.modrinth:fadeless:${project.fadeless_version_1_21}"
 
 		// Comment out the following dependencies to check vanilla compatibility
-		// modRuntimeOnly "maven.modrinth:raised:${project.raised_version_1_21}"
-		// modRuntimeOnly "maven.modrinth:double-hotbar:${project.double_hotbar_version_1_21}"
+		modRuntimeOnly "maven.modrinth:raised:${project.raised_version_1_21}"
+		modRuntimeOnly "maven.modrinth:double-hotbar:${project.double_hotbar_version_1_21}"
 	}
 }
 
