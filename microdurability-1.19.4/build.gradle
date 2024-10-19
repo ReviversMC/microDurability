@@ -27,7 +27,10 @@ dependencies {
 		modRuntimeOnly "curse.maven:no-fade-452768:${project.no_fade_version_1_19_4}"
 
 		// Comment out the following dependencies to check vanilla compatibility
-		modRuntimeOnly "maven.modrinth:raised:${project.raised_version_1_19_4}"
+		// modRuntimeOnly "maven.modrinth:raised:Fabric-1.19.4-${project.raised_v1_version}"
+		// modRuntimeOnly "maven.modrinth:raised:Fabric-1.19.4-${project.raised_v2_version}"
+		// modRuntimeOnly "maven.modrinth:raised:Fabric-1.19.4-${project.raised_v3_version}"
+		modRuntimeOnly "maven.modrinth:raised:Fabric-1.19.4-${project.raised_v4_version}"
 		modRuntimeOnly "maven.modrinth:double-hotbar:${project.double_hotbar_version_1_19_4}"
 	}
 }

@@ -19,7 +19,7 @@ public class Renderer119 extends Renderer117 {
 	@Override
 	@SuppressWarnings("checkstyle:SingleSpaceSeparator")
 	protected void renderGuiQuad(Object context, int x, int y, int width, int height, int red, int green, int blue, int alpha) {
-		y -= getRaisedOffset();
+		y += getRaisedOffset();
 
 		BufferBuilder buffer = Tessellator.getInstance().getBuffer();
 		RenderSystem.setShader(GameRenderer::getPositionColorShader);

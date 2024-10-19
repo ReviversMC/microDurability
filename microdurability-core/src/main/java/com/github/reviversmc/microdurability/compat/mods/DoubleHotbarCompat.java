@@ -6,12 +6,14 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.ModContainer;
 import net.fabricmc.loader.api.Version;
 import net.fabricmc.loader.api.VersionParsingException;
 
 import com.github.reviversmc.microdurability.MicroDurability;
 
 public class DoubleHotbarCompat {
+	private static final boolean isInstalled;
 	private static final Version installedVersion;
 	private static final Version v_1_1_0;
 	private static final Version v_1_2_0;
@@ -21,11 +23,10 @@ public class DoubleHotbarCompat {
 	private static Supplier<Integer> shiftSupplier;
 
 	static {
-		installedVersion = FabricLoader.getInstance()
-				.getModContainer("double_hotbar")
-				.get()
-				.getMetadata()
-				.getVersion();
+		ModContainer mod = FabricLoader.getInstance().getModContainer("double_hotbar").orElse(null);
+
+		isInstalled = mod != null;
+		installedVersion = isInstalled ? mod.getMetadata().getVersion() : null;
 
 		try {
 			v_1_1_0 = Version.parse("1.1.0");
@@ -36,7 +37,13 @@ public class DoubleHotbarCompat {
 		}
 	}
 
+	public static boolean isInstalled() {
+		return isInstalled;
+	}
+
 	public static int getHotbarHeight() {
+		assert isInstalled;
+
 		if (fatalError) {
 			return 0;
 		} else if (shiftSupplier == null) {

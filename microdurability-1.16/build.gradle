@@ -31,7 +31,10 @@ dependencies {
 		modRuntimeOnly "curse.maven:no-fade-452768:${project.no_fade_version_1_16}"
 
 		// Comment out the following dependencies to check vanilla compatibility
-		modRuntimeOnly "maven.modrinth:raised:${project.raised_version_1_16}"
+		// modRuntimeOnly "maven.modrinth:raised:Fabric-1.16.5-${project.raised_v1_version}"
+		// modRuntimeOnly "maven.modrinth:raised:Fabric-1.16.5-${project.raised_v2_version}"
+		// modRuntimeOnly "maven.modrinth:raised:Fabric-1.16.5-${project.raised_v3_version}"
+		modRuntimeOnly "maven.modrinth:raised:Fabric-1.16.5-${project.raised_v4_version}"
 	}
 }
 

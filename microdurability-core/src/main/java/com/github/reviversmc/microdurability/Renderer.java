@@ -1,7 +1,5 @@
 package com.github.reviversmc.microdurability;
 
-import net.fabricmc.loader.api.FabricLoader;
-
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -11,8 +9,6 @@ import com.github.reviversmc.microdurability.compat.mods.RaisedCompat;
 
 public abstract class Renderer {
 	private static final Identifier microdurabilityTexture = Identifier.tryParse("microdurability:textures/gui/icons.png");
-	private static final boolean doubleHotbarLoaded = FabricLoader.getInstance().isModLoaded("double_hotbar");
-	private static final boolean raisedLoaded = FabricLoader.getInstance().isModLoaded("raised");
 	protected final MinecraftClient mc;
 
 	protected Renderer() {
@@ -20,7 +16,7 @@ public abstract class Renderer {
 	}
 
 	protected final int getRaisedOffset() {
-		if (!raisedLoaded) {
+		if (!RaisedCompat.isInstalled()) {
 			return 0;
 		}
 
@@ -28,11 +24,11 @@ public abstract class Renderer {
 	}
 
 	private int getDoubleHotbarOffset() {
-		if (!doubleHotbarLoaded) {
+		if (!DoubleHotbarCompat.isInstalled()) {
 			return 0;
 		}
 
-		return DoubleHotbarCompat.getHotbarHeight();
+		return -1 * DoubleHotbarCompat.getHotbarHeight();
 	}
 
 	private boolean isStatusAreaVisible() {
@@ -97,7 +93,7 @@ public abstract class Renderer {
 		int scaledHeight = mc.getWindow().getScaledHeight();
 
 		int x = scaledWidth/2 - 7;
-		int y = scaledHeight - 30 - getDoubleHotbarOffset() - MicroDurability.config.armorBars.yOffset;
+		int y = scaledHeight - 30 + getDoubleHotbarOffset() - MicroDurability.config.armorBars.yOffset;
 		if (mc.player.experienceLevel > 0) y -= 6;
 
 		boolean renderedWarning = MicroDurability.config.lowDurabilityWarning.displayWarningForArmor
@@ -113,6 +109,10 @@ public abstract class Renderer {
 		for (ItemStack armorPiece : mc.player.getArmorItems()) {
 			if (!shouldWarn(armorPiece)) {
 				continue;
+			}
+
+			if (RaisedCompat.isInstalled() && !RaisedCompat.isV3OrLater()) {
+				y += getRaisedOffset();
 			}
 
 			renderWarning(context, x, y);

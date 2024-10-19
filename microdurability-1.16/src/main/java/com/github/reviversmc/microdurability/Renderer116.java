@@ -18,6 +18,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Matrix4f;
 
+import com.github.reviversmc.microdurability.compat.mods.RaisedCompat;
+
 /**
  * See {@link ItemRenderer#renderGuiItemOverlay(TextRenderer, ItemStack, int, int, String)}.
  */
@@ -82,7 +84,9 @@ public class Renderer116 extends Renderer {
 	@Override
 	@SuppressWarnings("checkstyle:SingleSpaceSeparator")
 	protected void renderGuiQuad(Object context, int x, int y, int width, int height, int red, int green, int blue, int alpha) {
-		y -= getRaisedOffset();
+		if (!RaisedCompat.isV4OrLater()) {
+			y += getRaisedOffset();
+		}
 
 		BufferBuilder buffer = Tessellator.getInstance().getBuffer();
 		buffer.begin(GL11.GL_QUADS, VertexFormats.POSITION_COLOR);

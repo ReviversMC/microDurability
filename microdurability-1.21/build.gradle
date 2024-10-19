@@ -26,7 +26,7 @@ dependencies {
 		modRuntimeOnly "maven.modrinth:fadeless:${project.fadeless_version_1_21}"
 
 		// Comment out the following dependencies to check vanilla compatibility
-		modRuntimeOnly "maven.modrinth:raised:${project.raised_version_1_21}"
+		modRuntimeOnly "maven.modrinth:raised:Fabric-1.21-${project.raised_v4_version}"
 		modRuntimeOnly "maven.modrinth:double-hotbar:${project.double_hotbar_version_1_21}"
 	}
 }

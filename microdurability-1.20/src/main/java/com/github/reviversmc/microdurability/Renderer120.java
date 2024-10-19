@@ -7,6 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.ColorHelper;
 
+import com.github.reviversmc.microdurability.compat.mods.RaisedCompat;
+
 /**
  * See {@link DrawContext#drawItemInSlot(TextRenderer, ItemStack, int, int, String)}.
  */
@@ -26,6 +28,10 @@ public class Renderer120 extends Renderer1194 {
 
 	@Override
 	protected void renderGuiQuad(Object context, int x, int y, int width, int height, int red, int green, int blue, int alpha) {
+		if (RaisedCompat.isInstalled() && !RaisedCompat.isV3OrLater()) {
+			y += getRaisedOffset();
+		}
+
 		((DrawContext) context).fill(RenderLayer.getGuiOverlay(), x, y, x + width, y + height, ColorHelper.Argb.getArgb(alpha, red, green, blue));
 	}
 }
